@@ -55,7 +55,15 @@ public class CarController : MonoBehaviour
         // Acceleration
         if (Input.GetAxis("Vertical") != 0)
         {
-            _speed = acceleration * Input.GetAxis("Vertical");
+            if (_currentSpeed is < 1 and > -1 && Input.GetAxis("Vertical") < 0)
+            {
+                // Hand brake
+                _speed = 0;
+            }
+            else
+            {
+                _speed = acceleration * Input.GetAxis("Vertical");
+            }
         }
         //
 
@@ -108,7 +116,7 @@ public class CarController : MonoBehaviour
         sphere.AddForce(transform.forward * _currentSpeed, ForceMode.Acceleration);
         
         // Gravity
-        sphere.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+        sphere.AddForce(Vector3.down * gravity, ForceMode.Force);
         
         // Steering * Normal Adjustment
         Physics.Raycast(transform.position + Vector3.right * 3.33f, 

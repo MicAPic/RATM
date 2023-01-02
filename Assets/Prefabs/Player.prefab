@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 977356386678096110}
   m_Layer: 2
   m_Name: Sphere Collider
-  m_TagString: Untagged
+  m_TagString: Sphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   informationText: {fileID: 0}
   sphere: {fileID: 977356386678096110}
-  acceleration: 65
+  acceleration: 75
   steering: 10
   gravity: 25
   slantingModifier: 1.4
@@ -634,8 +634,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.23111, y: 1.7072835, z: 2.3728592}
-  m_Center: {x: 0.015995264, y: 0.3928192, z: -0.13467777}
+  m_Size: {x: 4.23111, y: 1.7072835, z: 2.5576527}
+  m_Center: {x: 0.015995264, y: 0.39281917, z: -0.04228103}
 --- !u!114 &1964898705526498678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4724006258544034745
 Transform:
   m_ObjectHideFlags: 0
@@ -709,8 +709,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.23111, y: 0.97368026, z: 2.832159}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.23111, y: 0.75324404, z: 2.7757614}
+  m_Center: {x: 0, y: 0.16300803, z: 0}
 --- !u!114 &3073440102350687418
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,10 @@ public class Bumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(transform.name + " bumped into: " + collision.transform.name);
+        
+        if (collision.rigidbody == _sphere) return;
+        
         _sphere.AddForce(collision.impulse.normalized, ForceMode.Impulse);
         StartCoroutine(ReturnToDefaultPos());
     }
