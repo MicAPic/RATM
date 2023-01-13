@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,34 +18,43 @@ public class CarController : MonoBehaviour
     public Rigidbody sphere;
     public float acceleration = 30f;
     public float steering = 80f;
+    public float tilting = 1f;
     public float gravity = 10f;
     public float slantingModifier = 1.4f;
     
     [Header("Animation")]
     public float maxSteerAngle = 30f;
-    public List<Axle> Axles;
+    public Transform suspension;
+    public List<Axle> axles;
 
     private float _speed, _currentSpeed;
     private float _rpm;
-    private float _rotate, _currentRotate;
+    private float _yRotate, _currentYRotate;
+    private float _zRotate, _currentZRotate;
     
     private bool _drifting;
     private int _driftDirection;
+
+    private Transform _transform;
     
     // Start is called before the first frame update
-    /*void Start()
+    void Start()
     {
-        
-    }*/
+        _transform = transform;
+    }
 
     // Update is called once per frame
     void Update()
     {
         // Animation & Movement
-        transform.position = sphere.transform.position - new Vector3(0, 0.57f, 0);
+        _transform.position = sphere.transform.position - new Vector3(0, 0.57f, 0);
+        suspension.position = _transform.position;
+        suspension.localRotation = Quaternion.Euler(_transform.localEulerAngles.x, 
+                                                    _transform.localEulerAngles.y, 
+                                                    suspension.localEulerAngles.z);
 
         var rpm = Vector3.right * sphere.velocity.magnitude;
-        foreach (var axle in Axles)
+        foreach (var axle in axles)
         {
             axle.leftWheel.Rotate(rpm);
             axle.rightWheel.Rotate(rpm);
@@ -74,11 +82,11 @@ public class CarController : MonoBehaviour
             float amount = Mathf.Abs(Input.GetAxis("Horizontal"));
             Steer(dir, amount);
             {
-                var wheelSteer = new Vector3(Axles[0].leftWheel.localEulerAngles.x, 
-                                            dir * amount * maxSteerAngle, 
-                                            0);
-                Axles[0].leftWheel.localEulerAngles = wheelSteer;
-                Axles[0].rightWheel.localEulerAngles = wheelSteer;
+                var wheelSteer = new Vector3(axles[0].leftWheel.localEulerAngles.x, 
+                                             dir * amount * maxSteerAngle, 
+                                             0);
+                axles[0].leftWheel.localEulerAngles = wheelSteer;
+                axles[0].rightWheel.localEulerAngles = wheelSteer;
             }
         }
         //
@@ -106,32 +114,34 @@ public class CarController : MonoBehaviour
 
         _currentSpeed = Mathf.SmoothStep(_currentSpeed, _speed, Time.deltaTime * 12f); 
         _speed = 0f;
-        _currentRotate = Mathf.Lerp(_currentRotate, _rotate, Time.deltaTime * 4f); 
-        _rotate = 0f;
+        _currentYRotate = Mathf.Lerp(_currentYRotate, _yRotate, Time.deltaTime * 4f); 
+        _yRotate = 0f;
+        _currentZRotate = Mathf.Lerp(_currentZRotate, _zRotate, Time.deltaTime * 12f); 
+        _zRotate = 0f;
     }
     
     public void FixedUpdate()
     {
-        //Forward Acceleration
-        sphere.AddForce(transform.forward * _currentSpeed, ForceMode.Acceleration);
+        // Forward Acceleration
+        sphere.AddForce(_transform.forward * _currentSpeed, ForceMode.Acceleration);
         
         // Gravity
         sphere.AddForce(Vector3.down * gravity, ForceMode.Force);
         
         // Steering * Normal Adjustment
-        Physics.Raycast(transform.position + Vector3.right * 3.33f, 
+        Physics.Raycast(_transform.position + Vector3.right * 3.33f, 
             Vector3.down, 
             out var hit, 
             4.0f);
 
         // i hate this so much, yet it all somehow works:
-        var slant = (Quaternion.FromToRotation(transform.up, hit.normal) * 
-                         Quaternion.Euler(0, transform.eulerAngles.y, 0)).eulerAngles.x;
+        var slant = (Quaternion.FromToRotation(_transform.up, hit.normal) * 
+                         Quaternion.Euler(0, _transform.eulerAngles.y, 0)).eulerAngles.x;
         slant -= Mathf.Ceil(slant / 360f - 0.5f) * 360f; // convert to (-180, 180]
-        transform.rotation = Quaternion.Lerp(transform.rotation,
+        _transform.rotation = Quaternion.Lerp(_transform.rotation,
                                              Quaternion.Euler(slant * slantingModifier,    
-                                                                transform.eulerAngles.y + _currentRotate, 
-                                                                0), 
+                                                                _transform.eulerAngles.y + _currentYRotate, 
+                                                                _currentZRotate), 
                                              Time.deltaTime * 5f);
 
         informationText.text = $"Speed: {_currentSpeed}";
@@ -139,6 +149,7 @@ public class CarController : MonoBehaviour
 
     private void Steer(int direction, float amount)
     {
-        _rotate = steering * direction * amount;
+        _zRotate = tilting * direction * amount;
+        _yRotate = steering * direction * amount;
     }
 }

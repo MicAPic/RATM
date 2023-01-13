@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977356386426495260}
   m_Layer: 2
-  m_Name: Wheels
+  m_Name: Suspension
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977356386426495261}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -198,8 +198,8 @@ Transform:
   - {fileID: 977356386296111452}
   - {fileID: 977356387196763002}
   - {fileID: 977356386546193697}
-  m_Father: {fileID: 977356388402712529}
-  m_RootOrder: 0
+  m_Father: {fileID: 649107342372095651}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977356386546193710
 GameObject:
@@ -315,7 +315,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 649107342372095651}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &977356386678096097
 SphereCollider:
@@ -455,12 +455,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977356388402712539}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 977356386426495260}
   - {fileID: 8670421700849300164}
   - {fileID: 4724006258544034745}
   m_Father: {fileID: 649107342372095651}
@@ -532,10 +531,12 @@ MonoBehaviour:
   sphere: {fileID: 977356386678096110}
   acceleration: 75
   steering: 10
+  tilting: 2
   gravity: 25
   slantingModifier: 1.4
   maxSteerAngle: 30
-  Axles:
+  suspension: {fileID: 977356386426495260}
+  axles:
   - leftWheel: {fileID: 977356386340397265}
     rightWheel: {fileID: 977356386296111452}
   - leftWheel: {fileID: 977356387196763002}
@@ -569,6 +570,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 977356388402712529}
+  - {fileID: 977356386426495260}
   - {fileID: 977356386678096096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -605,7 +607,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 977356388402712529}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5886101846983448914
 Rigidbody:
@@ -680,7 +682,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 977356388402712529}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4921723449355753478
 Rigidbody:
