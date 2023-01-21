@@ -1,0 +1,159 @@
+{
+  "accessors": [
+    {
+      "name": "Mesh1 Group1 Model_1_positions",
+      "componentType": 5126,
+      "count": 48,
+      "min": [
+        0,
+        0,
+        -1
+      ],
+      "max": [
+        1,
+        0.21250000596046448,
+        0
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_normals",
+      "componentType": 5126,
+      "count": 48,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 576
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_texcoords",
+      "componentType": 5126,
+      "count": 48,
+      "min": [
+        -39.37009811401367,
+        -38.37009811401367
+      ],
+      "max": [
+        39.37009811401367,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_0_indices",
+      "componentType": 5123,
+      "count": 84,
+      "min": [
+        0
+      ],
+      "max": [
+        47
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 0
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "modularBuildings_013",
+      "byteLength": 1704,
+      "uri": "data:application/octet-stream;base64,AACAPwAAAAAAAACAAACAP5qZWT4AAACAAAAAAJqZWT4AAACAAAAAAAAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAIC/AACAP5qZWT4AAIC/AACAP5qZWT4AAGC/AACAP5qZ2T0AAGC/AACAP5qZ2T0AAAC+AACAP5qZWT4AAAC+AACAP5qZWT4AAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAIC/AACAPwAAAAAAAIC/AAAAAAAAAAAAAACAAAAAAJqZWT4AAACAAAAAAJqZWT4AAAC+AAAAAJqZ2T0AAAC+AAAAAJqZ2T0AAGC/AAAAAJqZWT4AAGC/AAAAAJqZWT4AAIC/AAAAAAAAAAAAAIC/AACAP5qZWT4AAAC+AAAAAJqZWT4AAAC+AAAAAJqZWT4AAACAAACAP5qZWT4AAACAAAAAAJqZWT4AAAC+AACAP5qZWT4AAAC+AACAP5qZ2T0AAAC+AAAAAJqZ2T0AAAC+AACAP5qZ2T0AAAC+AACAP5qZ2T0AAGC/AAAAAJqZ2T0AAGC/AAAAAJqZ2T0AAAC+AACAP5qZWT4AAGC/AAAAAJqZWT4AAGC/AAAAAJqZ2T0AAGC/AACAP5qZ2T0AAGC/AAAAAJqZWT4AAIC/AAAAAJqZWT4AAGC/AACAP5qZWT4AAGC/AACAP5qZWT4AAIC/AAAAAAAAAAAAAIC/AAAAAJqZWT4AAIC/AACAP5qZWT4AAIC/AACAPwAAAAAAAIC/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAP+7L9KOBcWOJAACAP+7L9KOBcWOJAACAP+7L9KOBcWOJAACAP+7L9KOBcWOJAACAP+7L9KOBcWOJAACAP+7L9KOBcWOJAACAP+7L9KOBcWOJAACAP+7L9KOBcWOJAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/+3odQgAAgD/7eh1Ca7frwAAAAABrt+vAAAAAAAAAgD8L6guMAACAP/t6HUIAAIA/+3odQmu368CSywlCa7frwJLLCUJrt0vA9nqdQGu3S8D2ep1Aa7frwAvqC4xrt+vA+3odwgAAgD8AAAAAAACAPwAAAAD7ehnC+3odwvt6GcIAAAAAAACAPwAAAABrt+vA9nqdwGu368D2ep3Aa7dLwJLLCcJrt0vAkssJwmu368D7eh3Ca7frwPt6HcIAAIA/+3odQu31esAAAAAA7fV6wAAAAAAAAIA/+3odQgAAgD8AAAAAa7frwPt6HcJrt+vA+3odwmu3S8AAAAAAa7dLwPt6HULt9XrA+3odQpLLBcIAAAAAkssFwgAAAADt9XrA+3odQmu368AAAAAAa7frwAAAAABrt0vA+3odQmu3S8AAAAAA+3oZwgAAAACSywXC+3odQpLLBcL7eh1C+3oZwgAAAAAAAIA/AAAAAGu368D7eh3Ca7frwPt6HcIAAIA/AAABAAIAAAACAAMACgALAAQABQAGAAcACQAKAAQABQAHAAgACAAJAAQABAAFAAgADAANAA4ADAAOAA8AEAARABIAFAAVABYAEAASABMAFAAWABcAFwAQABMAEwAUABcAGAAZABoAGAAaABsAHAAdAB4AHAAeAB8AIAAhACIAIAAiACMAJAAlACYAJAAmACcAKAApACoAKAAqACsALAAtAC4ALAAuAC8A"
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_0",
+      "buffer": 0,
+      "byteLength": 1152,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_1",
+      "buffer": 0,
+      "byteLength": 384,
+      "byteOffset": 1152,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_2",
+      "buffer": 0,
+      "byteLength": 168,
+      "byteOffset": 1536,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "Brick",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.917647,
+          0.898039,
+          0.811765,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh1 Group1 Model_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Mesh1 Group1 Model",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

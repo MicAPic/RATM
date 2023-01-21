@@ -1,0 +1,203 @@
+{
+  "accessors": [
+    {
+      "name": "Mesh1 Group1 Model_1_positions",
+      "componentType": 5126,
+      "count": 54,
+      "min": [
+        0,
+        0,
+        -1
+      ],
+      "max": [
+        1,
+        0.625,
+        0
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_normals",
+      "componentType": 5126,
+      "count": 54,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 648
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_texcoords",
+      "componentType": 5126,
+      "count": 54,
+      "min": [
+        -39.37009811401367,
+        -38.37009811401367
+      ],
+      "max": [
+        39.37009811401367,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_0_indices",
+      "componentType": 5123,
+      "count": 90,
+      "min": [
+        0
+      ],
+      "max": [
+        49
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_1_indices",
+      "componentType": 5123,
+      "count": 6,
+      "min": [
+        50
+      ],
+      "max": [
+        53
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 180
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "modularBuildings_050",
+      "byteLength": 1920,
+      "uri": "data:application/octet-stream;base64,tBPQJQAAAAAAAIC/AAAAAPkPKSYAAAC/tBPQJQAAID8AAAC/tBPQJQAAID8AAIC/AACAPwAAAAAAAACAAAAAP7QTUCQAAACAAAAAAPkPKSYAAAC/tBPQJQAAAAAAAIC/AACAPwAAAAAAAIC/AAAAPwAAID8AAACAAAAAP7QTUCQAAACAAACAPwAAAAAAAACAAACAPwAAID8AAACAAAAAPwAAID8AAACAfZG4PtejAD8F3Q6+AAAAP7QTUCQAAACAtBPQJQAAID8AAAC/tBPQJQAAID8AAIC/tBPQJQAAID8AAAC/AAAAPwAAID8AAACAAACAPwAAID8AAACAAACAPwAAID8AAIC/AACAPwAAAAAAAIC/AACAPwAAID8AAIC/AACAPwAAID8AAACAAACAPwAAAAAAAACAtBPQJQAAAAAAAIC/tBPQJQAAID8AAIC/AACAPwAAID8AAIC/AACAPwAAAAAAAIC/Bd0OPtejAD99kbi+Bd0OPkjh+j19kbi+AAAAAPkPKSYAAAC/fZG4Pkjh+j0F3Q6+fZG4Pkjh+j0F3Q6+fZG4PtejAD8F3Q6+ucXcPtejAD85RVe+ucXcPkjh+j05RVe+fZG4PtejAD8F3Q6+Bd0OPtejAD99kbi+OUVXPtejAD+5xdy+ucXcPtejAD85RVe+Bd0OPtejAD99kbi+Bd0OPkjh+j19kbi+OUVXPkjh+j25xdy+OUVXPtejAD+5xdy+Bd0OPkjh+j19kbi+fZG4Pkjh+j0F3Q6+ucXcPkjh+j05RVe+OUVXPkjh+j25xdy+ucXcPtejAD85RVe+OUVXPtejAD+5xdy+OUVXPkjh+j25xdy+ucXcPkjh+j05RVe+AACAvzF2piW0E9ClAACAvzF2piW0E9ClAACAvzF2piW0E9ClAACAvzF2piW0E9CliOJkpQAAgL8qdqajiOJkpQAAgL8qdqajiOJkpQAAgL8qdqajiOJkpQAAgL8qdqajiOJkpQAAgL8qdqajAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/9wQ1v3qc5SX3BDU/9wQ1v3qc5SX3BDU/9wQ1v3qc5SX3BDU/9wQ1v3qc5SX3BDU/tBPQJQAAgD+hE1AmtBPQJQAAgD+hE1AmtBPQJQAAgD+hE1AmtBPQJQAAgD+hE1AmtBPQJQAAgD+hE1AmAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/9wQ1v3qc5SX3BDU/9wQ1v3qc5SX3BDU/9wQ1v3qc5SX3BDU/9wQ1v3qc5SX3BDU/9wQ1vwAAAAD3BDW/9wQ1vwAAAAD3BDW/9wQ1vwAAAAD3BDW/9wQ1vwAAAAD3BDW/viv7JQAAgL++K/ulviv7JQAAgL++K/ulviv7JQAAgL++K/ulviv7JQAAgL++K/ul9wQ1P22YQSb3BDU/9wQ1P22YQSb3BDU/9wQ1P22YQSb3BDU/9wQ1P22YQSb3BDU/ib7dpQAAgD96TAwmib7dpQAAgD96TAwmib7dpQAAgD96TAwmib7dpQAAgD96TAwm9wQ1v8yaMab3BDU/9wQ1v8yaMab3BDU/9wQ1v8yaMab3BDU/9wQ1v8yaMab3BDU/+3odwgAAgD/hep3BAACAP+F6ncG02bzB+3odwrTZvMH7eh3CAACAP+F6ncEAAIA/9ve5DuF6lcEbAICo+3oZwvt6HcL7ehnC4XqdQbTZvMHhep1BAACAP/t6HUIAAIA/+3odQrTZvMHdtV5BtNm8wanZxECcRJbB3bVeQQAAgD/dtV7BtNm8wf//vyf7ehnC//+/J+F6lcHhep1BAACAP/t6HUIAAIA/+3odQvt6GcL7eh1CAACAP/t6HUK02bzBAAAAALTZvMEAAAAAAACAPxsAgKgAAIA/GwCAqLTZvMH7eh3CtNm8wft6HcIAAIA/qdnEwJxElsGp2cTAP6l0wN21XsEAAIA/qdnEQD+pdMDdtV7BP6l0wN21XsGcRJbB6NmOwZxElsHo2Y7BP6l0wKkTY8EzxI/AM8SvwKkTU8HfbATBhJ5/wULPh8G+2ejA3bVeQZxElsHdtV5BP6l0wOjZjkE/qXTA6NmOQZxElsEzxK9AqRNTwakTY0EzxI/AQs+HQb7Z6MDfbARBhJ5/wanZxECcRJbBqdnEwJxElsGp2cTAP6l0wKnZxEA/qXTAAAABAAIAAAACAAMABAAFAAYABAAGAAcABAAHAAgACQAKAAsACQALAAwADQAOAA8ADgANABAAEQASABMAEQATABQAEQAUABUAFgAXABgAFgAYABkAGgAbABwAGgAcAB0ADgAQAB4AHgAQAB8AIAAfABAAIAAhAB8ADwAhACAAIQAPAA4AIgAjACQAIgAkACUAJgAnACgAJgAoACkAKgArACwAKgAsAC0ALgAvADAALgAwADEAMgAzADQAMgA0ADUA"
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_0",
+      "buffer": 0,
+      "byteLength": 1296,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_1",
+      "buffer": 0,
+      "byteLength": 432,
+      "byteOffset": 1296,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_2",
+      "buffer": 0,
+      "byteLength": 192,
+      "byteOffset": 1728,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "Brick",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.917647,
+          0.898039,
+          0.811765,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "Glass",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.611765,
+          0.831373,
+          0.886275,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh1 Group1 Model_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 4,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Mesh1 Group1 Model",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

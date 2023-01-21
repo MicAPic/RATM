@@ -1,0 +1,247 @@
+{
+  "accessors": [
+    {
+      "name": "Mesh1 Group1 Model_1_positions",
+      "componentType": 5126,
+      "count": 76,
+      "min": [
+        0,
+        0,
+        -1
+      ],
+      "max": [
+        1,
+        0.21250000596046448,
+        0
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_normals",
+      "componentType": 5126,
+      "count": 76,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 912
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_texcoords",
+      "componentType": 5126,
+      "count": 76,
+      "min": [
+        -39.37009811401367,
+        -38.37009811401367
+      ],
+      "max": [
+        39.37009811401367,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_0_indices",
+      "componentType": 5123,
+      "count": 108,
+      "min": [
+        0
+      ],
+      "max": [
+        75
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_1_indices",
+      "componentType": 5123,
+      "count": 24,
+      "min": [
+        23
+      ],
+      "max": [
+        51
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 216
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_2_indices",
+      "componentType": 5123,
+      "count": 12,
+      "min": [
+        27
+      ],
+      "max": [
+        43
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 264
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "modularBuildings_003",
+      "byteLength": 2720,
+      "uri": "data:application/octet-stream;base64,AACAP5qZWT4AAACAAACAPzMzIz4AAACAAACAPzMzIz4AAIC/AACAP5qZWT4AAIC/AAAAAJqZWT4AAACAAAAAADMzIz4AAACAAACAPzMzIz4AAACAAACAP5qZWT4AAACAAAAAAJqZWT4AAIC/AAAAADMzIz4AAIC/AAAAADMzIz4AAACAAAAAAJqZWT4AAACAAACAP5qZWT4AAIC/AACAPzMzIz4AAIC/AAAAADMzIz4AAIC/AAAAAJqZWT4AAIC/CtejPDMzIz5I4Xq/AAAAADMzIz4AAIC/AACAPzMzIz4AAIC/AAAAADMzIz4AAACACtejPDMzIz4K16O8AACAPzMzIz4AAACASOF6PzMzIz4K16O8CtejPJqZWT0K16O8SOF6P5qZWT0K16O8SOF6PzMzIz4K16O8CtejPDMzIz4K16O8CtejPJqZWT0K16O8SOF6P5qZWT0K16O8SOF6P5qZWT1I4Xq/CtejPJqZWT1I4Xq/AACAP5qZWT0AAACAAAAAAJqZWT0AAACAAAAAAJqZWT0AAIC/AACAP5qZWT0AAIC/CtejPDMzIz5I4Xq/SOF6PzMzIz5I4Xq/SOF6P5qZWT1I4Xq/CtejPJqZWT1I4Xq/SOF6PzMzIz5I4Xq/CtejPDMzIz5I4Xq/CtejPDMzIz4K16O8SOF6PzMzIz4K16O8SOF6PzMzIz5I4Xq/CtejPDMzIz4K16O8CtejPDMzIz5I4Xq/CtejPJqZWT1I4Xq/CtejPJqZWT0K16O8SOF6P5qZWT0K16O8SOF6P5qZWT1I4Xq/SOF6PzMzIz5I4Xq/SOF6PzMzIz4K16O8AACAPwAAAAAAAIC/AACAP5qZWT0AAIC/AACAP5qZWT0AAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAJqZWT0AAIC/AACAP5qZWT0AAIC/AACAPwAAAAAAAIC/AAAAAAAAAAAAAACAAAAAAJqZWT0AAACAAAAAAJqZWT0AAIC/AAAAAAAAAAAAAIC/AACAPwAAAAAAAACAAACAP5qZWT0AAACAAAAAAJqZWT0AAACAAAAAAAAAAAAAAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAIC/AACAPwAAAAAAAIC/AAAAAJqZWT4AAIC/AAAAAJqZWT4AAACAAACAP5qZWT4AAACAAACAP5qZWT4AAIC/AACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAgL8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAxw4cJgAAgD/HDhwmxw4cJgAAgD/HDhwmxw4cJgAAgD/HDhwmxw4cJgAAgD/HDhwmAAAAAGu368AAAAAAm8mowPt6HUKbyajA+3odQmu368AAAAAAa7frwAAAAACbyajA+3odQpvJqMD7eh1Ca7frwPt6HcJrt+vA+3odwpvJqMAAAAAAm8mowAAAAABrt+vA+3odwmu368D7eh3Cm8mowAAAAACbyajAAAAAAGu368Atk0m/r1QWwgAAAAD7ehnC+3odwvt6GcIAAAAAAACAPy2TSb9Ks1k++3odwgAAgD+vVBrCSrNZPi2TST+Vt4u/r1QaQpW3i7+vVBpCm8mowC2TST+byajALZNJP0qzWT6vVBpCSrNZPq9UGkKvVBbCLZNJP69UFsL7eh1CAACAPwAAAAAAAIA/AAAAAPt6GcL7eh1C+3oZwi2TSb+byajAr1QawpvJqMCvVBrClbeLvy2TSb+Vt4u/r1Qawq9UFsItk0k/r1QWwi2TST9Ks1k+r1QaQkqzWT6vVBpCr1QWwi2TSb+byajAr1QawpvJqMCvVBrClbeLvy2TSb+Vt4u/LZNJP5W3i7+vVBpClbeLv69UGkKbyajALZNJP5vJqMD7eh1CAACAP/t6HUKVt4u/AAAAAJW3i78AAAAAAACAPwAAAAAAAIA/AAAAAJW3i7/7eh3ClbeLv/t6HcIAAIA/AAAAAAAAgD8AAAAAlbeLv/t6HcKVt4u/+3odwgAAgD/7eh1CAACAP/t6HUKVt4u/AAAAAJW3i78AAAAAAACAP/t6HcIAAIA/AAAAAAAAgD8AAAAA+3oZwvt6HcL7ehnCMzOjp/t6GcIzM6OnAACAP/t6HUIAAIA/+3odQvt6GcIAAAEAAgAAAAIAAwAEAAUABgAEAAYABwAIAAkACgAIAAoACwAMAA0ADgAMAA4ADwAQABEAEgARABAAEwAUABMAEAATABQAFQAVABQAFgAbAB8AHAAbACAAHwAgABsAIQAeACEAGwAhAB4AIgAiAB4AHQAQABIAJwAnABIAFgAVABYAEgAcAB8AHQAiAB0AHwA0ADUANgA0ADYANwA4ADkAOgA4ADoAOwA8AD0APgA8AD4APwBAAEEAQgBAAEIAQwBEAEUARgBEAEYARwBIAEkASgBIAEoASwAXABgAGQAXABkAGgAjACQAJQAjACUAJgAsAC0ALgAsAC4ALwAwADEAMgAwADIAMwAbABwAHQAbAB0AHgAoACkAKgAoACoAKwA="
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_0",
+      "buffer": 0,
+      "byteLength": 1824,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_1",
+      "buffer": 0,
+      "byteLength": 608,
+      "byteOffset": 1824,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_2",
+      "buffer": 0,
+      "byteLength": 288,
+      "byteOffset": 2432,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "Dark_brick",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.780392,
+          0.705882,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "Brick",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.917647,
+          0.898039,
+          0.811765,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "FrontColor",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh1 Group1 Model_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 4,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 5,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Mesh1 Group1 Model",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

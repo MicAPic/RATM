@@ -531,7 +531,7 @@ MonoBehaviour:
   sphere: {fileID: 977356386678096110}
   acceleration: 75
   steering: 10
-  tilting: 2
+  tilting: 2.5
   gravity: 25
   slantingModifier: 1.4
   maxSteerAngle: 30

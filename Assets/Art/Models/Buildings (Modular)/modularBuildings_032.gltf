@@ -1,0 +1,203 @@
+{
+  "accessors": [
+    {
+      "name": "Mesh1 Group1 Model_1_positions",
+      "componentType": 5126,
+      "count": 44,
+      "min": [
+        -3.0320299222730274e-13,
+        -0.042443398386240005,
+        -1.1187700033187866
+      ],
+      "max": [
+        1.1187700033187866,
+        0.518750011920929,
+        2.887650090154263e-15
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_normals",
+      "componentType": 5126,
+      "count": 44,
+      "min": [
+        -1,
+        -1,
+        -0.9054589867591858
+      ],
+      "max": [
+        0.9054589867591858,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 528
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_texcoords",
+      "componentType": 5126,
+      "count": 44,
+      "min": [
+        -44.04600143432617,
+        -38.37009811401367
+      ],
+      "max": [
+        44.04600143432617,
+        40.584999084472656
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_0_indices",
+      "componentType": 5123,
+      "count": 30,
+      "min": [
+        0
+      ],
+      "max": [
+        43
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 0
+    },
+    {
+      "name": "Mesh1 Group1 Model_1_1_indices",
+      "componentType": 5123,
+      "count": 42,
+      "min": [
+        6
+      ],
+      "max": [
+        39
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 60
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "modularBuildings_032",
+      "byteLength": 1552,
+      "uri": "data:application/octet-stream;base64,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"
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_0",
+      "buffer": 0,
+      "byteLength": 1056,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_1",
+      "buffer": 0,
+      "byteLength": 352,
+      "byteOffset": 1056,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_2",
+      "buffer": 0,
+      "byteLength": 144,
+      "byteOffset": 1408,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "Brick",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.917647,
+          0.898039,
+          0.811765,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "Roof",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.266667,
+          0.266667,
+          0.266667,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh1 Group1 Model_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 4,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Mesh1 Group1 Model",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
