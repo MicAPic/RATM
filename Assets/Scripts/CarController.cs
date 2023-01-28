@@ -63,7 +63,7 @@ public class CarController : MonoBehaviour
         // Acceleration
         if (Input.GetAxis("Vertical") != 0)
         {
-            if (_currentSpeed is < 1 and > -1 && Input.GetAxis("Vertical") < 0)
+            if (Input.GetAxis("Vertical") < 0)
             {
                 // Hand brake
                 _speed = 0;
