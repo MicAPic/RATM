@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class Axle 
@@ -46,6 +47,14 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // TODO: remove the following block
+        // DEBUG
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        //
+        
         // Animation & Movement
         _transform.position = sphere.transform.position - new Vector3(0, 0.57f, 0);
         suspension.position = _transform.position;
