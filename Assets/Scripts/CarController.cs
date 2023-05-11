@@ -21,7 +21,12 @@ public class CarController : MonoBehaviour
     public float steering = 80f;
     public float tilting = 1f;
     public float gravity = 10f;
+    [Range(0.1f, 2.0f)]
     public float slantingModifier = 1.4f;
+    [Range(0.1f, 2.0f)]
+    public float brakeModifier = 1.2f;
+    [Range(0.1f, 2.0f)]
+    public float reverseModifier = 0.5f;
     
     [Header("Animation")]
     public float maxSteerAngle = 30f;
@@ -74,8 +79,16 @@ public class CarController : MonoBehaviour
         {
             if (Input.GetAxis("Vertical") < 0)
             {
-                // Hand brake
-                _speed = 0;
+                if (_currentSpeed > 0)
+                {
+                    // brake
+                    _speed = brakeModifier * acceleration * Input.GetAxis("Vertical");
+                }
+                else
+                {
+                    // reverse driving
+                    _speed = reverseModifier * acceleration * Input.GetAxis("Vertical");
+                }
             }
             else
             {
@@ -85,10 +98,12 @@ public class CarController : MonoBehaviour
         //
 
         // Steering
-        if (Input.GetAxis("Horizontal") != 0)
+        if (Input.GetAxis("Horizontal") != 0 && Mathf.Abs(_currentSpeed) - 3.0f > 0) 
         {
-            int dir = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
-            float amount = Mathf.Abs(Input.GetAxis("Horizontal"));
+            // the second condition is added to prevent steering when the car has stopped
+            
+            var dir = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
+            var amount = Mathf.Abs(Input.GetAxis("Horizontal"));
             Steer(dir, amount);
             {
                 var wheelSteer = new Vector3(axles[0].leftWheel.localEulerAngles.x, 
