@@ -1785,7 +1785,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -2578,8 +2578,8 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillAmount: 0
+  m_FillClockwise: 0
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -2730,8 +2730,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2b79d8028fbc5934dbf609066054cb88, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 89c876fed5ba4324a959bcb8214178c6, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2823,12 +2823,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940794101}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f7c782a23b2c4c4a8504376c6c1dbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wavTexture: {fileID: 11400000, guid: 3d337af3c00bb9341b8e986e582e038a, type: 2}
+  _wavTexture: {fileID: 11400000, guid: e210e5e8dc49ce842b690a3e9c46fbbe, type: 2}
   _channel: 0
   _positionSource: {fileID: 940794102}
   _color: {r: 1, g: 1, b: 1, a: 1}
@@ -2843,7 +2843,7 @@ Transform:
   m_GameObject: {fileID: 940794101}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.72, y: 0.03, z: 1}
+  m_LocalScale: {x: 0.72, y: 0.13, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 515286840}
@@ -3906,7 +3906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4179,6 +4179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4eb6e726dc5874488badd2c20ec9091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introAnimationDuration: 0.75
+  border: {fileID: 838425959}
+  announcerSource: {fileID: 940794102}
   _transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
 --- !u!114 &1281954722
 MonoBehaviour:

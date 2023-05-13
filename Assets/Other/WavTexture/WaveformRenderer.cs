@@ -6,7 +6,6 @@ using UnityEngine;
 namespace WavTexture
 {
     /// Basic waveform graph renderer.
-    [ExecuteInEditMode]
     class WaveformRenderer : MonoBehaviour
     {
         #region Editable properties
@@ -111,7 +110,7 @@ namespace WavTexture
 
             if (_mesh != null)
             {
-                Destroy(_mesh);
+                DestroyImmediate(_mesh);
                 _mesh = null;
             }
         }
@@ -119,10 +118,10 @@ namespace WavTexture
         void OnDestroy()
         {
             if (_mesh != null)
-                Destroy(_mesh);
+                DestroyImmediate(_mesh);
 
             if (_material != null)
-                Destroy(_material);
+                DestroyImmediate(_material);
         }
 
         void Update()
