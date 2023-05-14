@@ -8,11 +8,16 @@ public class IntroSystem : MonoBehaviour
 {
     [SerializeField] 
     private List<AudioClip> announcerClips;
+    [SerializeField]
+    private GameObject inGameUI;
     private PlayableDirector _director;
     [SerializeField] 
-    private CarController _player;
+    private CarController player;
     [SerializeField]
-    private AudioSource _audioSource;
+    private AudioSource audioSource;
+
+    private bool _canSkip = true;
+    private Coroutine _delayCoroutine;
 
     private void Awake()
     {
@@ -23,18 +28,36 @@ public class IntroSystem : MonoBehaviour
     void Start()
     {
         _director.Play();
-        StartCoroutine(Countdown((float) _director.duration));
+        _delayCoroutine = StartCoroutine(DelayCountdown((float) _director.duration));
     }
 
-    private IEnumerator Countdown(float delay)
+    void Update()
+    {
+        if (_canSkip && Input.anyKey)
+        {
+            _canSkip = false;
+            _director.time = _director.duration;
+            StopCoroutine(_delayCoroutine);
+            StartCoroutine(Countdown());
+        }
+    }
+
+    private IEnumerator DelayCountdown(float delay)
     {
         yield return new WaitForSeconds(delay);
+        _canSkip = false;
+        StartCoroutine(Countdown());
+    }
+
+    private IEnumerator Countdown()
+    {
+        inGameUI.SetActive(true);
         foreach (var clip in announcerClips)
         {
             yield return new WaitForSeconds(1.0f);
-            _audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip);
         }
-        _player.canProcessInput = true;
+        player.canProcessInput = true;
         yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);
     }

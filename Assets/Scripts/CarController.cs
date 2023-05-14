@@ -13,7 +13,7 @@ public class Axle
 
 public class CarController : MonoBehaviour
 {
-    public TMP_Text informationText;
+    // public TMP_Text informationText;
 
     [Header("General")] 
     public bool canProcessInput;
@@ -36,7 +36,8 @@ public class CarController : MonoBehaviour
     public Transform suspension;
     public List<Axle> axles;
 
-    private float _speed, _currentSpeed;
+    public float currentSpeed;
+    private float _speed;
     private float _rpm;
     private float _yRotate, _currentYRotate;
     private float _zRotate, _currentZRotate;
@@ -84,7 +85,7 @@ public class CarController : MonoBehaviour
         {
             if (Input.GetAxis("Vertical") < 0)
             {
-                if (_currentSpeed > 0)
+                if (currentSpeed > 0)
                 {
                     // brake
                     _speed = brakeModifier * acceleration * Input.GetAxis("Vertical");
@@ -103,7 +104,7 @@ public class CarController : MonoBehaviour
         //
 
         // Steering
-        if (Input.GetAxis("Horizontal") != 0 && Mathf.Abs(_currentSpeed) - 3.0f > 0) 
+        if (Input.GetAxis("Horizontal") != 0 && Mathf.Abs(currentSpeed) - 3.0f > 0) 
         {
             // the second condition is added to prevent steering when the car has stopped
             
@@ -141,7 +142,7 @@ public class CarController : MonoBehaviour
         }
         //
 
-        _currentSpeed = Mathf.SmoothStep(_currentSpeed, _speed, Time.deltaTime * 12f); 
+        currentSpeed = Mathf.SmoothStep(currentSpeed, _speed, Time.deltaTime * 12f); 
         _speed = 0f;
         _currentYRotate = Mathf.Lerp(_currentYRotate, _yRotate, Time.deltaTime * 4f); 
         _yRotate = 0f;
@@ -152,7 +153,7 @@ public class CarController : MonoBehaviour
     public void FixedUpdate()
     {
         // Forward Acceleration
-        sphere.AddForce(_transform.forward * _currentSpeed, ForceMode.Acceleration);
+        sphere.AddForce(_transform.forward * currentSpeed, ForceMode.Acceleration);
         
         // Gravity
         sphere.AddForce(Vector3.down * gravity, ForceMode.Force);
@@ -173,7 +174,7 @@ public class CarController : MonoBehaviour
                                                                 _currentZRotate), 
                                              Time.deltaTime * 5f);
 
-        informationText.text = $"Speed: {_currentSpeed}";
+        // Debug.Log(currentSpeed);
     }
 
     private void Steer(int direction, float amount)
