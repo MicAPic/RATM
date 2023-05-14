@@ -15,6 +15,9 @@ public class CarController : MonoBehaviour
 {
     public TMP_Text informationText;
 
+    [Header("General")] 
+    public bool canProcessInput;
+
     [Header("Physics")]
     public Rigidbody sphere;
     public float acceleration = 30f;
@@ -59,6 +62,8 @@ public class CarController : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
         //
+        
+        if (!canProcessInput) return;
         
         // Animation & Movement
         _transform.position = sphere.transform.position - new Vector3(0, 0.57f, 0);
