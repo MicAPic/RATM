@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class Axle 
@@ -39,9 +38,11 @@ public class CarController : MonoBehaviour
     public float currentSpeed;
     private float _speed;
     private float _rpm;
-    private float _yRotate, _currentYRotate;
-    private float _zRotate, _currentZRotate;
-    
+    public float currentYRotate;
+    private float _yRotate;
+    public float currentZRotate;
+    private float _zRotate;
+
     private bool _drifting;
     private int _driftDirection;
 
@@ -60,12 +61,10 @@ public class CarController : MonoBehaviour
         // DEBUG
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("MainMenu");
+            FindObjectOfType<UI.UI>().LoadScene("MainMenu");
         }
         //
-        
-        if (!canProcessInput) return;
-        
+
         // Animation & Movement
         _transform.position = sphere.transform.position - new Vector3(0, 0.57f, 0);
         suspension.position = _transform.position;
@@ -79,6 +78,8 @@ public class CarController : MonoBehaviour
             axle.leftWheel.Rotate(rpm);
             axle.rightWheel.Rotate(rpm);
         }
+        
+        if (!canProcessInput) return;
         
         // Acceleration
         if (Input.GetAxis("Vertical") != 0)
@@ -144,9 +145,9 @@ public class CarController : MonoBehaviour
 
         currentSpeed = Mathf.SmoothStep(currentSpeed, _speed, Time.deltaTime * 12f); 
         _speed = 0f;
-        _currentYRotate = Mathf.Lerp(_currentYRotate, _yRotate, Time.deltaTime * 4f); 
+        currentYRotate = Mathf.Lerp(currentYRotate, _yRotate, Time.deltaTime * 4f); 
         _yRotate = 0f;
-        _currentZRotate = Mathf.Lerp(_currentZRotate, _zRotate, Time.deltaTime * 12f); 
+        currentZRotate = Mathf.Lerp(currentZRotate, _zRotate, Time.deltaTime * 12f); 
         _zRotate = 0f;
     }
     
@@ -170,8 +171,8 @@ public class CarController : MonoBehaviour
         slant -= Mathf.Ceil(slant / 360f - 0.5f) * 360f; // convert to (-180, 180]
         _transform.rotation = Quaternion.Lerp(_transform.rotation,
                                              Quaternion.Euler(slant * slantingModifier,    
-                                                                _transform.eulerAngles.y + _currentYRotate, 
-                                                                _currentZRotate), 
+                                                                _transform.eulerAngles.y + currentYRotate, 
+                                                                currentZRotate), 
                                              Time.deltaTime * 5f);
 
         // Debug.Log(currentSpeed);

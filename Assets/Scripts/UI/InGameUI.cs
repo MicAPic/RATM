@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,13 @@ namespace UI
         [SerializeField]
         private float topSpeed;  // as of now, has to be determined empirically 
         [SerializeField]
+        private CarController player;
+        
+        [Header("UI Elements")]
+        [SerializeField]
         private Image speedometer;
         [SerializeField]
-        private CarController player;
+        private TMP_Text lapText;
 
         [Header("Minimap")]
         [SerializeField] 
@@ -25,7 +30,7 @@ namespace UI
 
         void Awake()
         {
-            gameObject.SetActive(false);
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
             if (worldPosConstraints.Length != 2 && worldPosConstraints.Length != minimapPosConstraints.Length)
             {
                 Debug.LogError("Minimap constraints are not set up correctly.");
@@ -41,6 +46,16 @@ namespace UI
         {
             speedometer.fillAmount = Mathf.Abs(Mathf.Round(player.currentSpeed) / topSpeed);
             markerTransform.anchoredPosition = PlayerPos2MinimapPos(player.transform.position);
+        }
+
+        public void UpdateLapText(int current, int total)
+        {
+            if (current == total)
+            {
+                lapText.color = new Color(1.0f, 0.6196079f, 0.2392157f);
+            }
+            lapText.text = current.ToString();
+            lapText.GetComponent<Animator>().SetTrigger("NewLap");
         }
 
         private Vector2 PlayerPos2MinimapPos(Vector3 playerPos)

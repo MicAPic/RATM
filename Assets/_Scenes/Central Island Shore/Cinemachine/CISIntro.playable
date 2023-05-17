@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.5
+    m_Start: 1.4833333333333334
     m_ClipIn: 0
     m_Asset: {fileID: 5855173105586689640}
     m_Duration: 1.0219047619047619
@@ -441,7 +441,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: announcer_welcome2
   - m_Version: 1
-    m_Start: 2.5166666666666666
+    m_Start: 3
     m_ClipIn: 0
     m_Asset: {fileID: 386429742753281408}
     m_Duration: 1.7301133786848073
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 1
     m_ClipIn: 0
     m_Asset: {fileID: 5900337267941282820}
     m_Duration: 1
@@ -618,8 +618,8 @@ MonoBehaviour:
     m_Recordable: 0
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 6.000000000000001
-    m_PreExtrapolationTime: 0
+    m_PostExtrapolationTime: 5.000000000000001
+    m_PreExtrapolationTime: 1
     m_DisplayName: IntroFadeIn
   - m_Version: 1
     m_Start: 7.000000000000001
