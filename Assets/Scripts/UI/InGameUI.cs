@@ -1,4 +1,4 @@
-using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +17,14 @@ namespace UI
         private Image speedometer;
         [SerializeField]
         private TMP_Text lapText;
+        
+        [Header("Outro")]
+        [SerializeField]
+        private Image strikeLine;
+        [SerializeField]
+        private float lineAnimationDuration;
+        [SerializeField]
+        private GameObject endScreen;
 
         [Header("Minimap")]
         [SerializeField] 
@@ -46,6 +54,12 @@ namespace UI
         {
             speedometer.fillAmount = Mathf.Abs(Mathf.Round(player.currentSpeed) / topSpeed);
             markerTransform.anchoredPosition = PlayerPos2MinimapPos(player.transform.position);
+        }
+
+        public void ShowEndScreen()
+        {
+            strikeLine.DOFillAmount(1.0f, lineAnimationDuration)
+                      .OnComplete(() => endScreen.SetActive(true));
         }
 
         public void UpdateLapText(int current, int total)

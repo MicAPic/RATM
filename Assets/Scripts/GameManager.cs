@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UI;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,6 +60,7 @@ public class GameManager : MonoBehaviour
             player.currentYRotate = 0;
             player.currentZRotate = 0;
             topCamera.SetActive(true);
+            ui.ShowEndScreen();
             return;
         }
         ui.UpdateLapText(currentLap, totalLaps);
