@@ -1166,7 +1166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10, y: 0}
+  m_AnchoredPosition: {x: 2, y: 0}
   m_SizeDelta: {x: 465, y: 95.3389}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7490942918366662404
@@ -1197,7 +1197,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <size=50%>C. </size>0:00<size=50%>00</size>
+  m_text: '<size=50%>C. </size>0:00<size=50%>00</size>
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eac2b0d6499cdc4e908fad7545a2ace, type: 2}
   m_sharedMaterial: {fileID: 8770231047096924243, guid: 8eac2b0d6499cdc4e908fad7545a2ace,
@@ -1232,7 +1234,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1389,9 +1391,13 @@ MonoBehaviour:
   player: {fileID: 0}
   speedometer: {fileID: 7490942917636773138}
   lapText: {fileID: 7490942919314409846}
+  lapTime: {fileID: 7490942918366662407}
+  lapBestTime: {fileID: 7490942919046669546}
   strikeLine: {fileID: 1649977008648766828}
   lineAnimationDuration: 0.75
   endScreen: {fileID: 5806874137865805861}
+  title: {fileID: 8916063424707072705}
+  totalTime: {fileID: 4010810477628846969}
   worldPosConstraints: []
   minimapPosConstraints: []
   markerTransform: {fileID: 0}
@@ -1406,6 +1412,7 @@ GameObject:
   - component: {fileID: 7490942919046669541}
   - component: {fileID: 7490942919046669547}
   - component: {fileID: 7490942919046669546}
+  - component: {fileID: 2336033745212841472}
   m_Layer: 5
   m_Name: BestTime (TMP)
   m_TagString: Untagged
@@ -1430,7 +1437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -500, y: 0}
+  m_AnchoredPosition: {x: -505, y: 0}
   m_SizeDelta: {x: 465, y: 95.3389}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7490942919046669547
@@ -1461,7 +1468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <size=50%>H. </size>-:--<size=50%>--</size>
+  m_text: <size=50%>H. </size>-:--<size=50%>--
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eac2b0d6499cdc4e908fad7545a2ace, type: 2}
   m_sharedMaterial: {fileID: 8770231047096924243, guid: 8eac2b0d6499cdc4e908fad7545a2ace,
@@ -1531,6 +1538,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &2336033745212841472
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7490942919046669540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c53863146fe372498fda088cc25b72c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7490942919239664866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '?'
+  m_text: <mspace=0.72em>1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eac2b0d6499cdc4e908fad7545a2ace, type: 2}
   m_sharedMaterial: {fileID: 8770231047096924243, guid: 8eac2b0d6499cdc4e908fad7545a2ace,
@@ -1879,7 +1906,6 @@ GameObject:
   - component: {fileID: 251139509532147242}
   - component: {fileID: 7882057929744106755}
   - component: {fileID: 8916063424707072705}
-  - component: {fileID: 5605373927671249898}
   m_Layer: 0
   m_Name: Title (TMP)
   m_TagString: Untagged
@@ -2005,26 +2031,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!95 &5605373927671249898
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8203105066690475471}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3598887962315a5498a8653e31dffec9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8635377308288293511
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,6 @@ public class IntroSystem : MonoBehaviour
     [SerializeField]
     private GameObject inGameUI;
     private PlayableDirector _director;
-    [SerializeField] 
-    private CarController player;
     [SerializeField]
     private AudioSource audioSource;
 
@@ -57,7 +55,7 @@ public class IntroSystem : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             audioSource.PlayOneShot(clip);
         }
-        player.canProcessInput = true;
+        GameManager.Instance.StartRace();
         yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);
     }

@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,10 @@ namespace UI
         private Image speedometer;
         [SerializeField]
         private TMP_Text lapText;
+        [SerializeField]
+        private TMP_Text lapTime;
+        [SerializeField]
+        private TMP_Text lapBestTime;
         
         [Header("Outro")]
         [SerializeField]
@@ -25,6 +30,10 @@ namespace UI
         private float lineAnimationDuration;
         [SerializeField]
         private GameObject endScreen;
+        [SerializeField]
+        private TMP_Text title;
+        [SerializeField]
+        private TMP_Text totalTime;
 
         [Header("Minimap")]
         [SerializeField] 
@@ -54,12 +63,32 @@ namespace UI
         {
             speedometer.fillAmount = Mathf.Abs(Mathf.Round(player.currentSpeed) / topSpeed);
             markerTransform.anchoredPosition = PlayerPos2MinimapPos(player.transform.position);
+            if (!GameManager.Instance.isPaused)
+            {
+                lapTime.text = $"<size=50%>C. </size>{FormatTime(Time.time - GameManager.Instance.lapStartTime)}";
+            }
         }
 
         public void ShowEndScreen()
         {
             strikeLine.DOFillAmount(1.0f, lineAnimationDuration)
                       .OnComplete(() => endScreen.SetActive(true));
+        }
+        
+        public void UpdateLapTime(float newBest)
+        {
+            lapBestTime.text = $"<size=50%>H. </size>{FormatTime(newBest)}";
+            lapBestTime.GetComponent<Animator>().SetTrigger("NewLap");
+        }
+        
+        public void UpdateTotalTime(float time, bool newRecord)
+        {
+            totalTime.text = FormatTime(time);
+            if (newRecord)
+            {
+                title.text = "new record";
+                title.color = new Color(1.0f, 0.6196079f, 0.2392157f);
+            }
         }
 
         public void UpdateLapText(int current, int total)
@@ -68,7 +97,7 @@ namespace UI
             {
                 lapText.color = new Color(1.0f, 0.6196079f, 0.2392157f);
             }
-            lapText.text = current.ToString();
+            lapText.text = $"<mspace=0.72em>{current}";
             lapText.GetComponent<Animator>().SetTrigger("NewLap");
         }
 
@@ -80,6 +109,15 @@ namespace UI
                 (worldPosConstraints[1].y - worldPosConstraints[0].y);
 
             return new Vector2(x, y);
+        }
+
+        private string FormatTime(float time)
+        {
+            var minutes = (int)(time / 60);
+            var seconds = Math.Round(time % 60, 2);
+            var milliseconds = (int)(seconds % 1 * 100);
+
+            return $"{minutes}:{seconds:00}<size=50%>{milliseconds:00}";
         }
     }
 }
