@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -22,6 +23,12 @@ namespace UI
 
         [Header("UI Elements")]
         [SerializeField]
+        private CanvasGroup countdown;
+        [SerializeField]
+        private Image countdownCircle;
+        [SerializeField]
+        private TMP_Text[] countdownText;
+        [SerializeField]
         private TMP_Text lapText;
         [SerializeField]
         private TMP_Text lapTime;
@@ -32,6 +39,8 @@ namespace UI
 
         private float _speedometerFill;
         private float _currentSpeedometerFill;
+
+        private Color _deepSaffron = new(1.0f, 0.6196079f, 0.2392157f);
         
         [Header("Outro")]
         [SerializeField]
@@ -89,6 +98,35 @@ namespace UI
             }
         }
 
+        public IEnumerator VisualizeCountdown()
+        {
+            countdown.DOFade(1.0f, 1.0f);
+            for (var i = 3; i >= 0; i--)
+            {
+                yield return new WaitForSeconds(1.0f);
+                foreach (var tmpText in countdownText)
+                {
+                    tmpText.text = i.ToString();
+                }
+                countdownCircle.fillAmount = 1.0f;
+                countdownCircle.DOFillAmount(0.0f, 1.0f);
+            }
+            
+            countdownCircle.fillAmount = 0.0f;
+            countdownText[0].color = _deepSaffron;
+            
+            foreach (var tmpText in countdownText)
+            {
+                tmpText.text = "GO";
+                tmpText.DOColor(Color.white, 1.0f);
+            }
+            yield return new WaitForSeconds(1.0f);
+            foreach (var tmpText in countdownText)
+            {
+                tmpText.DOColor(Color.clear, 1.0f);
+            }
+        }
+
         public void ShowEndScreen(bool newRecord)
         {
             announcerAudioSource.PlayOneShot(finishClip);
@@ -114,7 +152,7 @@ namespace UI
             if (newRecord)
             {
                 title.text = "new record";
-                title.color = new Color(1.0f, 0.6196079f, 0.2392157f);
+                title.color = _deepSaffron;
             }
         }
 
@@ -122,7 +160,7 @@ namespace UI
         {
             if (current == total)
             {
-                lapText.color = new Color(1.0f, 0.6196079f, 0.2392157f);
+                lapText.color = _deepSaffron;
             }
             lapText.text = current.ToString();
             lapText.GetComponent<Animator>().SetTrigger("NewLap");

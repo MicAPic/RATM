@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -11,8 +12,6 @@ public class IntroSystem : MonoBehaviour
     [SerializeField]
     private GameObject inGameUI;
     private PlayableDirector _director;
-    [SerializeField]
-    private AudioSource audioSource;
 
     private bool _canSkip = true;
     private Coroutine _delayCoroutine;
@@ -50,10 +49,12 @@ public class IntroSystem : MonoBehaviour
     private IEnumerator Countdown()
     {
         inGameUI.SetActive(true);
+        var ui = inGameUI.GetComponentInParent<InGameUI>();
+        StartCoroutine(ui.VisualizeCountdown());
         foreach (var clip in announcerClips)
         {
             yield return new WaitForSeconds(1.0f);
-            audioSource.PlayOneShot(clip);
+            ui.announcerAudioSource.PlayOneShot(clip);
         }
         GameManager.Instance.StartRace();
         yield return new WaitForSeconds(1.0f);
