@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1421.2, y: 0}
-  m_SizeDelta: {x: 465, y: 95.3389}
+  m_AnchoredPosition: {x: -1435, y: 0}
+  m_SizeDelta: {x: 465, y: 87}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1177887167154911384
 CanvasRenderer:
@@ -67,10 +67,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '|3'
+  m_text: <font=Audiowide SDF"">|</font>3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8eac2b0d6499cdc4e908fad7545a2ace, type: 2}
-  m_sharedMaterial: {fileID: 8770231047096924243, guid: 8eac2b0d6499cdc4e908fad7545a2ace,
+  m_fontAsset: {fileID: 11400000, guid: 58169cd6c0cfded43a0aecbf90bfb83a, type: 2}
+  m_sharedMaterial: {fileID: -2394794444230223727, guid: 58169cd6c0cfded43a0aecbf90bfb83a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -95,15 +95,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 116
+  m_fontSizeBase: 116
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1166,8 +1166,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: 0}
-  m_SizeDelta: {x: 465, y: 95.3389}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 355, y: 95.3389}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7490942918366662404
 CanvasRenderer:
@@ -1197,12 +1197,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=50%>C. </size>0:00<size=50%>00</size>
+  m_text: '<size=50%><font="Audiowide SDF">C. </font></size>0:00<size=50%>00</size>
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8eac2b0d6499cdc4e908fad7545a2ace, type: 2}
-  m_sharedMaterial: {fileID: 8770231047096924243, guid: 8eac2b0d6499cdc4e908fad7545a2ace,
+  m_fontAsset: {fileID: 11400000, guid: 58169cd6c0cfded43a0aecbf90bfb83a, type: 2}
+  m_sharedMaterial: {fileID: -2394794444230223727, guid: 58169cd6c0cfded43a0aecbf90bfb83a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1227,8 +1227,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 116
+  m_fontSizeBase: 116
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1387,12 +1387,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
-  topSpeed: 75
+  topSpeed: 33
   player: {fileID: 0}
-  speedometer: {fileID: 7490942917636773138}
+  announcerAudioSource: {fileID: 0}
+  finishClip: {fileID: 8300000, guid: 868f4e7937678684ab16cf7598d05330, type: 3}
+  recordClip: {fileID: 8300000, guid: c8aa118d1db282244b6d4e86d77e2877, type: 3}
   lapText: {fileID: 7490942919314409846}
   lapTime: {fileID: 7490942918366662407}
   lapBestTime: {fileID: 7490942919046669546}
+  speedometer: {fileID: 7490942917636773138}
   strikeLine: {fileID: 1649977008648766828}
   lineAnimationDuration: 0.75
   endScreen: {fileID: 5806874137865805861}
@@ -1437,8 +1440,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -505, y: 0}
-  m_SizeDelta: {x: 465, y: 95.3389}
+  m_AnchoredPosition: {x: -375, y: 0}
+  m_SizeDelta: {x: 350, y: 95.3389}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7490942919046669547
 CanvasRenderer:
@@ -1468,10 +1471,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <size=50%>H. </size>-:--<size=50%>--
+  m_text: <size=50%><font="Audiowide SDF">H. </font></size>-:--<size=50%>--
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8eac2b0d6499cdc4e908fad7545a2ace, type: 2}
-  m_sharedMaterial: {fileID: 8770231047096924243, guid: 8eac2b0d6499cdc4e908fad7545a2ace,
+  m_fontAsset: {fileID: 11400000, guid: 58169cd6c0cfded43a0aecbf90bfb83a, type: 2}
+  m_sharedMaterial: {fileID: -2394794444230223727, guid: 58169cd6c0cfded43a0aecbf90bfb83a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1496,14 +1499,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 116
+  m_fontSizeBase: 116
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1670,8 +1673,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -97.88909, y: 0}
-  m_SizeDelta: {x: 84.9698, y: 95.3389}
+  m_AnchoredPosition: {x: -95.75017, y: 0}
+  m_SizeDelta: {x: 87.1087, y: 95.0699}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7490942919314409847
 CanvasRenderer:
@@ -1701,10 +1704,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <mspace=0.72em>1
+  m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8eac2b0d6499cdc4e908fad7545a2ace, type: 2}
-  m_sharedMaterial: {fileID: 8770231047096924243, guid: 8eac2b0d6499cdc4e908fad7545a2ace,
+  m_fontAsset: {fileID: 11400000, guid: 58169cd6c0cfded43a0aecbf90bfb83a, type: 2}
+  m_sharedMaterial: {fileID: -2394794444230223727, guid: 58169cd6c0cfded43a0aecbf90bfb83a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1729,8 +1732,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 116
+  m_fontSizeBase: 116
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

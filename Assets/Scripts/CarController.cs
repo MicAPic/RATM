@@ -46,6 +46,7 @@ public class CarController : MonoBehaviour
     private int _driftDirection;
 
     private Transform _transform;
+    private float _maxVelocity;
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class CarController : MonoBehaviour
     {
         // TODO: remove the following block
         // DEBUG
+        // Debug.Log(sphere.velocity.magnitude);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             FindObjectOfType<UI.UI>().LoadScene("MainMenu");
@@ -142,12 +144,12 @@ public class CarController : MonoBehaviour
         }
         //
 
-        currentSpeed = Mathf.SmoothStep(currentSpeed, _speed, Time.deltaTime * 12f); 
-        _speed = 0f;
-        currentYRotate = Mathf.Lerp(currentYRotate, _yRotate, Time.deltaTime * 4f); 
-        _yRotate = 0f;
-        currentZRotate = Mathf.Lerp(currentZRotate, _zRotate, Time.deltaTime * 12f); 
-        _zRotate = 0f;
+        currentSpeed = Mathf.SmoothStep(currentSpeed, _speed, Time.deltaTime * 12.0f); 
+        _speed = 0.0f;
+        currentYRotate = Mathf.Lerp(currentYRotate, _yRotate, Time.deltaTime * 4.0f); 
+        _yRotate = 0.0f;
+        currentZRotate = Mathf.Lerp(currentZRotate, _zRotate, Time.deltaTime * 12.0f); 
+        _zRotate = 0.0f;
     }
     
     public void FixedUpdate()

@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         }
     
         Instance = this;
+        // PlayerPrefs.DeleteAll();
     }
 
     // Start is called before the first frame update
@@ -101,12 +102,13 @@ public class GameManager : MonoBehaviour
             {
                 PlayerPrefs.SetFloat($"{SceneManager.GetActiveScene().name}_bestTime", totalTime);
                 ui.UpdateTotalTime(totalTime, true);
+                ui.ShowEndScreen(true);
             }
             else
             {
                 ui.UpdateTotalTime(totalTime, false);
+                ui.ShowEndScreen(false);
             }
-            ui.ShowEndScreen();
             return;
         }
         ui.UpdateLapText(currentLap, totalLaps);

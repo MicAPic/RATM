@@ -10,18 +10,28 @@ namespace UI
     {
         [SerializeField]
         private float topSpeed;  // as of now, has to be determined empirically 
-        [SerializeField]
+        [SerializeField] 
         private CarController player;
-        
-        [Header("UI Elements")]
+
+        [Header("Audio")] 
+        public AudioSource announcerAudioSource;
         [SerializeField]
-        private Image speedometer;
+        private AudioClip finishClip;
+        [SerializeField]
+        private AudioClip recordClip;
+
+        [Header("UI Elements")]
         [SerializeField]
         private TMP_Text lapText;
         [SerializeField]
         private TMP_Text lapTime;
         [SerializeField]
         private TMP_Text lapBestTime;
+        [SerializeField]
+        private Image speedometer;
+
+        private float _speedometerFill;
+        private float _currentSpeedometerFill;
         
         [Header("Outro")]
         [SerializeField]
@@ -61,23 +71,40 @@ namespace UI
         // Update is called once per frame
         void Update()
         {
-            speedometer.fillAmount = Mathf.Abs(Mathf.Round(player.currentSpeed) / topSpeed);
+            _speedometerFill = Mathf.Abs(Mathf.Round(player.sphere.velocity.magnitude) / topSpeed);
+            _currentSpeedometerFill = Mathf.SmoothStep(_currentSpeedometerFill, _speedometerFill,
+                                                       Time.deltaTime * 12.0f);
+            _speedometerFill = 0.0f;
+            
             markerTransform.anchoredPosition = PlayerPos2MinimapPos(player.transform.position);
+        }
+
+        void FixedUpdate()
+        {
+            speedometer.fillAmount = _currentSpeedometerFill;
             if (!GameManager.Instance.isPaused)
             {
-                lapTime.text = $"<size=50%>C. </size>{FormatTime(Time.time - GameManager.Instance.lapStartTime)}";
+                lapTime.text = "<size=50%><font=\"Audiowide SDF\">C. </font></size>" +
+                               FormatTime(Time.time - GameManager.Instance.lapStartTime);
             }
         }
 
-        public void ShowEndScreen()
+        public void ShowEndScreen(bool newRecord)
         {
+            announcerAudioSource.PlayOneShot(finishClip);
+            if (newRecord)
+            {
+                announcerAudioSource.clip = recordClip;
+                announcerAudioSource.PlayDelayed(finishClip.length + 1.0f);
+            }
+            
             strikeLine.DOFillAmount(1.0f, lineAnimationDuration)
                       .OnComplete(() => endScreen.SetActive(true));
         }
         
         public void UpdateLapTime(float newBest)
         {
-            lapBestTime.text = $"<size=50%>H. </size>{FormatTime(newBest)}";
+            lapBestTime.text = $"<size=50%><font=\"Audiowide SDF\">H. </font></size>{FormatTime(newBest)}";
             lapBestTime.GetComponent<Animator>().SetTrigger("NewLap");
         }
         
@@ -97,7 +124,7 @@ namespace UI
             {
                 lapText.color = new Color(1.0f, 0.6196079f, 0.2392157f);
             }
-            lapText.text = $"<mspace=0.72em>{current}";
+            lapText.text = current.ToString();
             lapText.GetComponent<Animator>().SetTrigger("NewLap");
         }
 
