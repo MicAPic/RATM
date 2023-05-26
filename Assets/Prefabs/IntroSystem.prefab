@@ -738,8 +738,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a9a877c1a887c654da579c2a8c229155, type: 3}
   - {fileID: 8300000, guid: 423434030d688884bb092fb8db7fe533, type: 3}
   - {fileID: 8300000, guid: 4c7261ef9fe713d45af1d4b4f03fc170, type: 3}
-  _player: {fileID: 0}
-  _audioSource: {fileID: 0}
+  inGameUI: {fileID: 0}
 --- !u!1 &1842661035264221770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1112,7 @@ Animator:
   m_GameObject: {fileID: 5701254220345921278}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0d33ba4af32e3cc4799b87d37e4105a5, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

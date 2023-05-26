@@ -1,15 +1,22 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Dan.Main;
 using UI;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public bool isPaused = true;
+
+    [Header("Online")] 
+    [SerializeField] 
+    private string publicKey;
 
     [Header("Race Logic")]
     public int totalLaps = 3;
@@ -38,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
     
         Instance = this;
-        // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey($"{SceneManager.GetActiveScene().name}_bestTime");
     }
 
     // Start is called before the first frame update
@@ -100,17 +107,56 @@ public class GameManager : MonoBehaviour
             var totalTime = Time.time - _raceStartTime;
             if (totalTime < totalBestTime)
             {
-                PlayerPrefs.SetFloat($"{SceneManager.GetActiveScene().name}_bestTime", totalTime);
-                ui.UpdateTotalTime(totalTime, true);
+                totalBestTime = totalTime;
+                
+                PlayerPrefs.SetFloat($"{SceneManager.GetActiveScene().name}_bestTime", totalBestTime);
+                ui.UpdateTotalTime(totalBestTime, true);
                 ui.ShowEndScreen(true);
+                UploadNewScore();
             }
             else
             {
                 ui.UpdateTotalTime(totalTime, false);
                 ui.ShowEndScreen(false);
+                ui.EnableButtons();
             }
             return;
         }
+
         ui.UpdateLapText(currentLap, totalLaps);
+    }
+    
+    private void UploadNewScore()
+    {
+        var nickname = PlayerPrefs.GetString("nickname", string.Empty);
+        var score = (int)totalBestTime * 100;
+        var boardEntry = $"{InGameUI.FormatTime(totalBestTime)}/{InGameUI.FormatTime(lapBestTime)}";
+        
+        LeaderboardCreator.Ping(isOnline => 
+            { 
+                if (isOnline && nickname != string.Empty) 
+                {
+                    ui.onlineIcons.SetActive(true);
+                    LeaderboardCreator.UploadNewEntry(publicKey, nickname, score, boardEntry,
+                        _ =>
+                        {
+                            StartCoroutine(ui.AnimateScoreUpload());
+                            ui.EnableButtons();
+                        },
+                        error =>
+                        {
+                            if (error == null) return;
+                            ui.EnableButtons();
+
+                            ui.ShowErrorIcon();
+                            Debug.Log(error);
+                        });
+                }
+                else
+                {
+                    ui.ShowErrorIcon();
+                    ui.EnableButtons();
+                }
+            });
     }
 }

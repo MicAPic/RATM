@@ -53,6 +53,11 @@ namespace UI
         private TMP_Text title;
         [SerializeField]
         private TMP_Text totalTime;
+        public GameObject onlineIcons;
+        [SerializeField] 
+        private Sprite offlineIcon;
+        [SerializeField] 
+        private Button[] buttons; 
 
         [Header("Minimap")]
         [SerializeField] 
@@ -166,6 +171,33 @@ namespace UI
             lapText.GetComponent<Animator>().SetTrigger("NewLap");
         }
 
+        public void EnableButtons()
+        {
+            foreach (var button in buttons)
+            {
+                button.interactable = true;
+            }
+        }
+        
+        public IEnumerator AnimateScoreUpload()
+        {
+            onlineIcons.SetActive(true);
+            var arrows = onlineIcons.transform.GetChild(0).GetComponent<TMP_Text>();
+            arrows.maxVisibleCharacters = 0;
+            yield return new WaitForSeconds(1.0f);
+            while (arrows.maxVisibleCharacters < 3)
+            {
+                arrows.maxVisibleCharacters += 1;
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+
+        public void ShowErrorIcon()
+        {
+            var globe = onlineIcons.transform.GetChild(1).GetComponent<Image>();
+            globe.sprite = offlineIcon;
+        }
+
         private Vector2 PlayerPos2MinimapPos(Vector3 playerPos)
         {
             var x = minimapPosConstraints[0].x + (playerPos.x - worldPosConstraints[0].x) * _minimapPosRange.x /
@@ -176,13 +208,13 @@ namespace UI
             return new Vector2(x, y);
         }
 
-        private string FormatTime(float time)
+        public static string FormatTime(float time)
         {
             var minutes = (int)(time / 60);
             var seconds = Math.Round(time % 60, 2);
             var milliseconds = (int)(seconds % 1 * 100);
 
-            return $"{minutes}:{seconds:00}<size=50%>{milliseconds:00}";
+            return $"{minutes}:{(int)seconds:00}<size=50%>{milliseconds:00}";
         }
     }
 }
