@@ -2231,6 +2231,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6561607094759091864, guid: ce8a968a2cc3ee54fb41cf8048d02bcd,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561607094759091864, guid: ce8a968a2cc3ee54fb41cf8048d02bcd,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 24e9b3ecd6a53c841b34533c45bad43a, type: 3}
+    - target: {fileID: 6561607094759091864, guid: ce8a968a2cc3ee54fb41cf8048d02bcd,
+        type: 3}
+      propertyPath: BypassEffects
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7015736719266573338, guid: ce8a968a2cc3ee54fb41cf8048d02bcd,
         type: 3}
       propertyPath: gravity

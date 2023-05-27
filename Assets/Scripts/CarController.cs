@@ -35,8 +35,14 @@ public class CarController : MonoBehaviour
     [SerializeField] 
     private AudioClip[] screechClips;
     [SerializeField] 
+    private AudioClip engineStartClip;
+    [SerializeField] 
     private AudioSource wheelAudioSource;
-    private Coroutine _currentAudioCoroutine;
+    [SerializeField] 
+    private AudioSource engineAudioSource;
+    
+    private Coroutine _currentEngineCoroutine;
+    private Coroutine _currentScreechCoroutine;
     
     [Header("Animation")]
     public float maxSteerAngle = 30f;
@@ -91,7 +97,7 @@ public class CarController : MonoBehaviour
         
         if (!canProcessInput) return;
         
-        // Acceleration
+        // Acceleration & relevant audio
         if (Input.GetAxis("Vertical") != 0)
         {
             if (Input.GetAxis("Vertical") < 0)
@@ -100,17 +106,46 @@ public class CarController : MonoBehaviour
                 {
                     // brake
                     _speed = brakeModifier * acceleration * Input.GetAxis("Vertical");
+
+                    StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
+                    if (Mathf.Abs(sphere.velocity.magnitude) > 25.0f)
+                    {
+                        wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
+                        wheelAudioSource.Play();
+                        StartAudioFade(wheelAudioSource, 0.65f, fadeInDuration);
+                    }
                 }
                 else
                 {
                     // reverse driving
                     _speed = reverseModifier * acceleration * Input.GetAxis("Vertical");
+                    StartAudioFade(wheelAudioSource, 0.0f, fadeOutDuration);
                 }
             }
             else
             {
                 _speed = acceleration * Input.GetAxis("Vertical");
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            engineAudioSource.PlayOneShot(engineStartClip);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            StartAudioFade(engineAudioSource, 0.15f, fadeInDuration, true);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (currentSpeed < 0.0f)
+            {
+                StartAudioFade(engineAudioSource, 0.05f, fadeInDuration, true);
+            }
+        }
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        {
+            StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
         }
         //
 
@@ -137,7 +172,7 @@ public class CarController : MonoBehaviour
         {
             wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
             wheelAudioSource.Play();
-            StartAudioFade(0.65f, fadeInDuration);
+            StartAudioFade(wheelAudioSource, 0.65f, fadeInDuration);
             
             _drifting = true;
             _driftDirection = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
@@ -153,7 +188,7 @@ public class CarController : MonoBehaviour
         
         if (Input.GetButtonUp("Jump") && _drifting)
         {
-            StartAudioFade(0.0f, fadeOutDuration);
+            StartAudioFade(wheelAudioSource, 0.0f, fadeOutDuration);
             _drifting = false;
         }
         //
@@ -199,24 +234,37 @@ public class CarController : MonoBehaviour
         _yRotate = steering * direction * amount;
     }
 
-    private void StartAudioFade(float targetVolume, float duration)
+    private void StartAudioFade(AudioSource source, float targetVolume, float duration, bool isEngine=false)
     {
-        if (_currentAudioCoroutine != null)
+        if (isEngine)
         {
-            StopCoroutine(_currentAudioCoroutine);
+            if (_currentEngineCoroutine != null)
+            {
+                StopCoroutine(_currentEngineCoroutine);
+            }
+
+            _currentEngineCoroutine = StartCoroutine(CarAudioFade(source, targetVolume, duration));
         }
-        _currentAudioCoroutine = StartCoroutine(CarAudioFade(targetVolume, duration));
+        else
+        {
+            if (_currentScreechCoroutine != null)
+            {
+                StopCoroutine(_currentScreechCoroutine);
+            }
+
+            _currentScreechCoroutine = StartCoroutine(CarAudioFade(source, targetVolume, duration));
+        }
     }
 
-    private IEnumerator CarAudioFade(float targetVolume, float duration)
+    private IEnumerator CarAudioFade(AudioSource source, float targetVolume, float duration)
     {
         float time = 0;
-        var start = wheelAudioSource.volume;
+        var start = source.volume;
         
         while (time < duration)
         {
             time += Time.deltaTime;
-            wheelAudioSource.volume = Mathf.Lerp(start, targetVolume, time / duration);
+            source.volume = Mathf.Lerp(start, targetVolume, time / duration);
             yield return null;
         }
     }
