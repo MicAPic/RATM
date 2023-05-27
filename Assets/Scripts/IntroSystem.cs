@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UI;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -54,7 +55,7 @@ public class IntroSystem : MonoBehaviour
         foreach (var clip in announcerClips)
         {
             yield return new WaitForSeconds(1.0f);
-            ui.announcerAudioSource.PlayOneShot(clip);
+            MusicManager.Instance.announcerSource.PlayOneShot(clip);
         }
         GameManager.Instance.StartRace();
         yield return new WaitForSeconds(1.0f);

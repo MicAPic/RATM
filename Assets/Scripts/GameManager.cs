@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Audio;
 using Dan.Main;
 using UI;
 using UnityEngine;
@@ -68,6 +69,8 @@ public class GameManager : MonoBehaviour
 
     public void StartRace()
     {
+        MusicManager.Instance.musicSource.gameObject.SetActive(true);
+        
         player.canProcessInput = true;
         _raceStartTime = Time.time;
         lapStartTime = _raceStartTime;

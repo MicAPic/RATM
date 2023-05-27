@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Audio;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -14,8 +15,7 @@ namespace UI
         [SerializeField] 
         private CarController player;
 
-        [Header("Audio")] 
-        public AudioSource announcerAudioSource;
+        [Header("Audio")]
         [SerializeField]
         private AudioClip finishClip;
         [SerializeField]
@@ -134,11 +134,11 @@ namespace UI
 
         public void ShowEndScreen(bool newRecord)
         {
-            announcerAudioSource.PlayOneShot(finishClip);
+            MusicManager.Instance.announcerSource.PlayOneShot(finishClip);
             if (newRecord)
             {
-                announcerAudioSource.clip = recordClip;
-                announcerAudioSource.PlayDelayed(finishClip.length + 1.0f);
+                MusicManager.Instance.announcerSource.clip = recordClip;
+                MusicManager.Instance.announcerSource.PlayDelayed(finishClip.length + 1.0f);
             }
             
             strikeLine.DOFillAmount(1.0f, lineAnimationDuration)

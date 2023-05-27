@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class Axle 
@@ -11,8 +13,6 @@ public class Axle
 
 public class CarController : MonoBehaviour
 {
-    // public TMP_Text informationText;
-
     [Header("General")] 
     public bool canProcessInput;
 
@@ -28,6 +28,15 @@ public class CarController : MonoBehaviour
     public float brakeModifier = 1.2f;
     [Range(0.1f, 2.0f)]
     public float reverseModifier = 0.5f;
+
+    [Header("Audio")] 
+    public float fadeInDuration;
+    public float fadeOutDuration;
+    [SerializeField] 
+    private AudioClip[] screechClips;
+    [SerializeField] 
+    private AudioSource wheelAudioSource;
+    private Coroutine _currentAudioCoroutine;
     
     [Header("Animation")]
     public float maxSteerAngle = 30f;
@@ -126,6 +135,10 @@ public class CarController : MonoBehaviour
         // Drifting
         if (Input.GetButtonDown("Jump") && !_drifting && Input.GetAxis("Horizontal") != 0)
         {
+            wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
+            wheelAudioSource.Play();
+            StartAudioFade(0.65f, fadeInDuration);
+            
             _drifting = true;
             _driftDirection = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
         }
@@ -140,6 +153,7 @@ public class CarController : MonoBehaviour
         
         if (Input.GetButtonUp("Jump") && _drifting)
         {
+            StartAudioFade(0.0f, fadeOutDuration);
             _drifting = false;
         }
         //
@@ -183,5 +197,27 @@ public class CarController : MonoBehaviour
     {
         _zRotate = tilting * direction * amount;
         _yRotate = steering * direction * amount;
+    }
+
+    private void StartAudioFade(float targetVolume, float duration)
+    {
+        if (_currentAudioCoroutine != null)
+        {
+            StopCoroutine(_currentAudioCoroutine);
+        }
+        _currentAudioCoroutine = StartCoroutine(CarAudioFade(targetVolume, duration));
+    }
+
+    private IEnumerator CarAudioFade(float targetVolume, float duration)
+    {
+        float time = 0;
+        var start = wheelAudioSource.volume;
+        
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            wheelAudioSource.volume = Mathf.Lerp(start, targetVolume, time / duration);
+            yield return null;
+        }
     }
 }

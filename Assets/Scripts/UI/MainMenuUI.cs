@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
+using Audio;
 using Dan.Main;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
 namespace UI
@@ -34,6 +33,11 @@ namespace UI
 
         void Start()
         {
+            try
+            {
+                MusicManager.Instance.musicSource.gameObject.SetActive(true);
+            }
+            catch (NullReferenceException) { }
             CheckConnection();
         }
 
