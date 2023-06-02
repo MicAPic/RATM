@@ -1,13 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Audio;
 using Dan.Main;
 using UI;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -69,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void StartRace()
     {
+        // TODO: set a music track here
         MusicManager.Instance.musicSource.gameObject.SetActive(true);
         
         player.canProcessInput = true;

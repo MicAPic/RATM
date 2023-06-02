@@ -35,6 +35,7 @@ public class IntroSystem : MonoBehaviour
         {
             _canSkip = false;
             _director.time = _director.duration;
+            MusicManager.Instance.musicSource.GetComponent<AudioPlayer>().FadeOut(0.01f);
             StopCoroutine(_delayCoroutine);
             StartCoroutine(Countdown());
         }
@@ -42,7 +43,10 @@ public class IntroSystem : MonoBehaviour
 
     private IEnumerator DelayCountdown(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay - 3.0f);
+        MusicManager.Instance.musicSource.GetComponent<AudioPlayer>().FadeOut(3.0f);
+        
+        yield return new WaitForSeconds(3.0f);
         _canSkip = false;
         StartCoroutine(Countdown());
     }
@@ -57,6 +61,7 @@ public class IntroSystem : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             MusicManager.Instance.announcerSource.PlayOneShot(clip);
         }
+        MusicManager.Instance.musicSource.gameObject.SetActive(false);
         GameManager.Instance.StartRace();
         yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);

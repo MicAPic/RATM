@@ -35,5 +35,15 @@ namespace Audio
         // {
         //
         // }
+
+        public void FadeOut(float duration)
+        {
+            StartCoroutine(FadeMixerGroup.StartFade(
+                MusicManager.Instance.audioMixer, 
+                exposedVolumeName, 
+                duration, 
+                0.0001f
+            ));
+        }
     }
 }

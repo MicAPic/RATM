@@ -8,7 +8,6 @@ namespace Audio
         public static MusicManager Instance;
         
         public AudioMixer audioMixer;
-        public AudioClip track;
 
         [Header("Audio Players")] 
         public AudioSource announcerSource;
@@ -31,9 +30,7 @@ namespace Audio
         {
             announcerSource = transform.GetChild(0).GetComponent<AudioSource>();
             sfxSource = transform.GetChild(1).GetComponent<AudioSource>();
-            
             musicSource = transform.GetChild(2).GetComponent<AudioSource>();
-            // musicSource.clip = track;
         }
 
         // Update is called once per frame
