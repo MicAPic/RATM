@@ -1,5 +1,7 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -12,9 +14,16 @@ namespace UI
         private Image border;
         [SerializeField] 
         private AudioSource announcerSource;
+        [SerializeField] 
+        private AudioSource sfxSource;
+
+        private AsyncOperation _sceneLoadOperation;
 
         void Start()
         {
+            _sceneLoadOperation = SceneManager.LoadSceneAsync("MainMenu");
+            _sceneLoadOperation.allowSceneActivation = false;
+            
             border.DOFillAmount(1.0f, introAnimationDuration)
                   .OnComplete(announcerSource.Play);
         }
@@ -24,8 +33,15 @@ namespace UI
         {
             if (Input.anyKey)
             {
-                LoadScene("MainMenu");
+                StartCoroutine(PlayEffectAndTransition());
             }
+        }
+
+        private IEnumerator PlayEffectAndTransition()
+        {
+            sfxSource.Play();
+            yield return new WaitForSeconds(sfxSource.clip.length);
+            LoadSceneAsync(_sceneLoadOperation);
         }
     }
 }
