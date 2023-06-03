@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour
     public int currentLap = 1;
     [SerializeField] 
     private List<Checkpoint> checkpoints;
-
+    private RecordSystem _recordSystem;
+    
+    [Space]
+    
     public float totalBestTime;
     public float lapBestTime;
     public float lapStartTime;
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour
         }
     
         Instance = this;
-        PlayerPrefs.DeleteKey($"{SceneManager.GetActiveScene().name}_bestTime");
+        // PlayerPrefs.DeleteKey($"{SceneManager.GetActiveScene().name}_bestTime");
     }
 
     // Start is called before the first frame update
@@ -56,13 +59,17 @@ public class GameManager : MonoBehaviour
             ui.UpdateLapTime(lapBestTime);
         }
         ui.UpdateLapText(currentLap, totalLaps);
+
+        _recordSystem = GetComponent<RecordSystem>();
     }
     
     // Update is called once per frame
-    // void Update()
-    // {
-    //     
-    // }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+        }
+    }
 
     public void StartRace()
     {
@@ -73,6 +80,8 @@ public class GameManager : MonoBehaviour
         _raceStartTime = Time.time;
         lapStartTime = _raceStartTime;
         isPaused = false;
+        
+        _recordSystem.StartRecording();
     }
 
     public void CheckForNewLap()
@@ -125,6 +134,14 @@ public class GameManager : MonoBehaviour
         }
 
         ui.UpdateLapText(currentLap, totalLaps);
+        
+        // Recording
+        _recordSystem.StopRecording();
+        _recordSystem.Replay();
+        if (currentLap < totalLaps)
+        {
+            _recordSystem.StartRecording();
+        }
     }
     
     private void UploadNewScore()

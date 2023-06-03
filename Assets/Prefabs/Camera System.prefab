@@ -480,7 +480,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1961060470387482833}
   - component: {fileID: 884242784841922122}
-  - component: {fileID: 2202304376549835778}
   - component: {fileID: 4746015417568132963}
   m_Layer: 0
   m_Name: BG Camera
@@ -547,14 +546,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2202304376549835778
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5186867479750465955}
-  m_Enabled: 1
 --- !u!114 &4746015417568132963
 MonoBehaviour:
   m_ObjectHideFlags: 0

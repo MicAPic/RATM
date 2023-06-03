@@ -40,7 +40,7 @@ namespace UI
         private float _speedometerFill;
         private float _currentSpeedometerFill;
 
-        private Color _deepSaffron = new(1.0f, 0.6196079f, 0.2392157f);
+        private readonly Color _deepSaffron = new(1.0f, 0.6196079f, 0.2392157f);
         
         [Header("Outro")]
         [SerializeField]
