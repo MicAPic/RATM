@@ -72,15 +72,6 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO: remove the following block
-        // DEBUG
-        // Debug.Log(sphere.velocity.magnitude);
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            FindObjectOfType<UI.UI>().LoadScene("MainMenu");
-        }
-        //
-
         // Animation & Movement
         _transform.position = sphere.transform.position - new Vector3(0, 0.57f, 0);
         suspension.position = _transform.position;
@@ -134,13 +125,13 @@ public class CarController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            StartAudioFade(engineAudioSource, 0.15f, fadeInDuration, true);
+            StartAudioFade(engineAudioSource, 1.0f, fadeInDuration, true);
         }
         if (Input.GetKey(KeyCode.S))
         {
             if (currentSpeed < 0.0f)
             {
-                StartAudioFade(engineAudioSource, 0.05f, fadeInDuration, true);
+                StartAudioFade(engineAudioSource, 0.85f, fadeInDuration, true);
             }
         }
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
@@ -172,7 +163,7 @@ public class CarController : MonoBehaviour
         {
             wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
             wheelAudioSource.Play();
-            StartAudioFade(wheelAudioSource, 0.65f, fadeInDuration);
+            StartAudioFade(wheelAudioSource, 1.0f, fadeInDuration);
             
             _drifting = true;
             _driftDirection = Input.GetAxis("Horizontal") > 0 ? 1 : -1;

@@ -193,6 +193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 4b1d9212d4fcf324394689ca19042f42, type: 2}
+  normalSnapshot: {fileID: 2540566862605994759, guid: 4b1d9212d4fcf324394689ca19042f42,
+    type: 2}
+  muffledSnapshot: {fileID: 24500006, guid: 4b1d9212d4fcf324394689ca19042f42, type: 2}
   announcerSource: {fileID: 0}
   sfxSource: {fileID: 0}
   musicSource: {fileID: 0}

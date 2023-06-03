@@ -42,7 +42,7 @@ namespace UI
 
         private readonly Color _deepSaffron = new(1.0f, 0.6196079f, 0.2392157f);
         
-        [Header("Outro")]
+        [Header("Outro / Pause")]
         [SerializeField]
         private Image strikeLine;
         [SerializeField]
@@ -57,7 +57,10 @@ namespace UI
         [SerializeField] 
         private Sprite offlineIcon;
         [SerializeField] 
-        private Button[] buttons; 
+        private Button[] buttons;
+
+        public bool canPause;
+        public bool isPaused = true;
 
         [Header("Minimap")]
         [SerializeField] 
@@ -91,12 +94,39 @@ namespace UI
             _speedometerFill = 0.0f;
             
             markerTransform.anchoredPosition = PlayerPos2MinimapPos(player.transform.position);
+
+            if (!Input.GetKeyDown(KeyCode.Escape) || !canPause) return;
+
+            if (isPaused)
+            {
+                // Unpause
+                Time.timeScale = 1.0f;
+                MusicManager.Instance.normalSnapshot.TransitionTo(0.5f);
+                strikeLine.DOFillAmount(0.0f, lineAnimationDuration);
+                endScreen.SetActive(false);
+
+                MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeIn(0.001f);
+                EnableButtons(false);
+            }
+            else
+            {
+                // Pause
+                Time.timeScale = 0.0f;
+                MusicManager.Instance.muffledSnapshot.TransitionTo(0.5f);
+                strikeLine.DOFillAmount(1.0f, lineAnimationDuration).SetUpdate(true);
+                endScreen.SetActive(true);
+                
+                MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeOut(0.001f);
+                EnableButtons();
+            }
+
+            isPaused = !isPaused;
         }
 
         void FixedUpdate()
         {
             speedometer.fillAmount = _currentSpeedometerFill;
-            if (!GameManager.Instance.isPaused)
+            if (!isPaused)
             {
                 lapTime.text = "<size=50%><font=\"Audiowide SDF\">C. </font></size>" +
                                FormatTime(Time.time - GameManager.Instance.lapStartTime);
@@ -143,6 +173,8 @@ namespace UI
             
             strikeLine.DOFillAmount(1.0f, lineAnimationDuration)
                       .OnComplete(() => endScreen.SetActive(true));
+            MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeOut(0.001f);
+            MusicManager.Instance.muffledSnapshot.TransitionTo(1.0f);
         }
         
         public void UpdateLapTime(float newBest)
@@ -153,11 +185,16 @@ namespace UI
         
         public void UpdateTotalTime(float time, bool newRecord)
         {
+            totalTime.gameObject.SetActive(true);
             totalTime.text = FormatTime(time);
             if (newRecord)
             {
                 title.text = "new record";
                 title.color = _deepSaffron;
+            }
+            else
+            {
+                title.text = "total time";
             }
         }
 
@@ -171,11 +208,11 @@ namespace UI
             lapText.GetComponent<Animator>().SetTrigger("NewLap");
         }
 
-        public void EnableButtons()
+        public void EnableButtons(bool value=true)
         {
             foreach (var button in buttons)
             {
-                button.interactable = true;
+                button.interactable = value;
             }
         }
         

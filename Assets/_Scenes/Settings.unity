@@ -1223,6 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416ec2cb604593543921ab91e2b9805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exposedVolumeName: musicVolume
   prefsVolumeName: MusicVolume
 --- !u!114 &1010172198
 MonoBehaviour:
@@ -1808,7 +1809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6beed2d8d87d45822bd05d5832eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
+  transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
 --- !u!1 &1455223075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,6 +2111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416ec2cb604593543921ab91e2b9805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exposedVolumeName: sfxVolume
   prefsVolumeName: SfxVolume
 --- !u!1 &1525777209
 GameObject:
@@ -2377,6 +2379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416ec2cb604593543921ab91e2b9805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exposedVolumeName: announcerVolume
   prefsVolumeName: AnnouncerVolume
 --- !u!114 &1719331418
 MonoBehaviour:

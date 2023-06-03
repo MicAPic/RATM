@@ -2,13 +2,15 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace UI
 {
     public class UI : MonoBehaviour
     {
+        [FormerlySerializedAs("_transitionMaterial")] 
         [SerializeField] 
-        private Material _transitionMaterial;
+        private Material transitionMaterial;
         
         public void LoadScene(string sceneName)
         {
@@ -32,8 +34,9 @@ namespace UI
             var screenRegion = new Rect(0, 0, Screen.width, Screen.height);
             screenTexture.ReadPixels(screenRegion, 0, 0, false);
             screenTexture.Apply(); // render the texture on GPU
-            _transitionMaterial.SetTexture("_FadeTex", screenTexture);
-                
+            transitionMaterial.SetTexture("_FadeTex", screenTexture);
+            
+            Time.timeScale = 1.0f; // to prevent bugs
             SceneManager.LoadScene(sceneToLoadAfter);
         }
     }

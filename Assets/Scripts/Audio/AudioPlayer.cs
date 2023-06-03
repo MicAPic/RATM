@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Audio
@@ -11,23 +12,19 @@ namespace Audio
         [SerializeField] 
         private string prefsVolumeName;
 
+        private float _maxVolume;
+
         void Awake()
         {
             // TODO: Cross-fade, perhaps?
+            _maxVolume = PlayerPrefs.GetFloat(prefsVolumeName, 0.994f);
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            MusicManager.Instance.audioMixer.SetFloat(exposedVolumeName, Mathf.Log10(0.0001f) * 20); 
-            
-            var maxVolume = PlayerPrefs.GetFloat(prefsVolumeName, 0.994f);
-            StartCoroutine(FadeMixerGroup.StartFade(
-                MusicManager.Instance.audioMixer, 
-                exposedVolumeName, 
-                fadeDuration, 
-                maxVolume
-                ));
+            MusicManager.Instance.audioMixer.SetFloat(exposedVolumeName, Mathf.Log10(0.0001f) * 20);
+            FadeIn(fadeDuration);
         }
 
         // Update is called once per frame
@@ -43,6 +40,16 @@ namespace Audio
                 exposedVolumeName, 
                 duration, 
                 0.0001f
+            ));
+        }
+
+        public void FadeIn(float duration)
+        {
+            StartCoroutine(FadeMixerGroup.StartFade(
+                MusicManager.Instance.audioMixer, 
+                exposedVolumeName, 
+                duration, 
+                _maxVolume
             ));
         }
     }

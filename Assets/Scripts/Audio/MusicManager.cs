@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace Audio
 {
@@ -8,6 +9,10 @@ namespace Audio
         public static MusicManager Instance;
         
         public AudioMixer audioMixer;
+
+        [Header("Snapshots")] 
+        public AudioMixerSnapshot normalSnapshot;
+        public AudioMixerSnapshot muffledSnapshot;
 
         [Header("Audio Players")] 
         public AudioSource announcerSource;
@@ -18,7 +23,15 @@ namespace Audio
         {
             if (Instance != null)
             {
-                Destroy(Instance.gameObject);
+                if (SceneManager.GetActiveScene().name != "MainMenu")
+                {
+                    Destroy(Instance.gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    return;
+                }
             }
 
             Instance = this;
@@ -33,10 +46,11 @@ namespace Audio
             musicSource = transform.GetChild(2).GetComponent<AudioSource>();
         }
 
-        // Update is called once per frame
-        // void Update()
-        // {
-        //     
-        // }
+        public void Clear()
+        {
+            Instance = null;
+            Destroy(gameObject);
+        }
+        
     }
 }

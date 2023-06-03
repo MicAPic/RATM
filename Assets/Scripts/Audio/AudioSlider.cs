@@ -6,6 +6,8 @@ namespace Audio
     public class AudioSlider : MonoBehaviour
     {
         [SerializeField] 
+        private string exposedVolumeName;
+        [SerializeField] 
         private string prefsVolumeName;
 
         void Awake()
@@ -16,7 +18,7 @@ namespace Audio
         public void SetVolume(float volume)
         {
             PlayerPrefs.SetFloat(prefsVolumeName, volume);
-            MusicManager.Instance.audioMixer.SetFloat(prefsVolumeName, Mathf.Log10(volume) * 20);
+            MusicManager.Instance.audioMixer.SetFloat(exposedVolumeName, Mathf.Log10(volume) * 20);
         }
     }
 }

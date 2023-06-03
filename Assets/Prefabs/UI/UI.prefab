@@ -618,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4943960803280985771
 RectTransform:
   m_ObjectHideFlags: 0
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 4383382920557117624}
   - component: {fileID: 5905610054750040969}
   m_Layer: 5
-  m_Name: EndScreen
+  m_Name: End/Pause Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -880,7 +880,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0f567693e9525b3478dfaa02ec54700a, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7c7732080de804589c9825597e2a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
+  transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
   topSpeed: 33
   player: {fileID: 0}
   finishClip: {fileID: 8300000, guid: 868f4e7937678684ab16cf7598d05330, type: 3}
@@ -1525,6 +1525,8 @@ MonoBehaviour:
   buttons:
   - {fileID: 1711888304637800118}
   - {fileID: 4195020993972714173}
+  canPause: 0
+  isPaused: 1
   worldPosConstraints: []
   minimapPosConstraints: []
   markerTransform: {fileID: 0}
@@ -2549,7 +2551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: total time
+  m_text: pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dd8408e0ffdad2448fa63ea2d4f2fa3, type: 2}
   m_sharedMaterial: {fileID: 2319400518916601160, guid: 6dd8408e0ffdad2448fa63ea2d4f2fa3,
@@ -2713,6 +2715,31 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2540566862605994759, guid: 4b1d9212d4fcf324394689ca19042f42,
+          type: 2}
+        m_TargetAssemblyTypeName: UnityEngine.Audio.AudioMixerSnapshot, UnityEngine
+        m_MethodName: TransitionTo
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.01
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Audio.AudioMixerSnapshot, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &2318064771740259320

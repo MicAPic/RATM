@@ -1,5 +1,3 @@
-using System;
-using Audio;
 using Dan.Main;
 using TMPro;
 using UnityEngine;
@@ -9,6 +7,7 @@ namespace UI
 {
     public class MainMenuUI : UI
     {
+        [Header("Animation")]
         [SerializeField] 
         private RectTransform disc;
         [Header("Online-related")]
@@ -33,11 +32,6 @@ namespace UI
 
         void Start()
         {
-            try
-            {
-                MusicManager.Instance.musicSource.gameObject.SetActive(true);
-            }
-            catch (NullReferenceException) { }
             CheckConnection();
         }
 

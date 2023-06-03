@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public bool isPaused = true;
-
+    [Header("Audio")] 
+    [SerializeField] private AudioClip mainTrack;
+    
     [Header("Online")] 
     [SerializeField] 
     private string publicKey;
@@ -64,22 +65,26 @@ public class GameManager : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-        }
-    }
+    // void Update()
+    // {
+    //     
+    // }
 
     public void StartRace()
     {
-        // TODO: set a music track here
-        MusicManager.Instance.musicSource.gameObject.SetActive(true);
+        // not all track are ready, so:
+        if (mainTrack != null)
+        {
+            MusicManager.Instance.musicSource.clip = mainTrack;
+            MusicManager.Instance.musicSource.GetComponent<AudioPlayer>().FadeIn(1.0f);
+            MusicManager.Instance.musicSource.Play();
+        }
         
         player.canProcessInput = true;
         _raceStartTime = Time.time;
         lapStartTime = _raceStartTime;
-        isPaused = false;
+        ui.canPause = true;
+        ui.isPaused = false;
         
         _recordSystem.StartRecording();
     }
@@ -106,7 +111,8 @@ public class GameManager : MonoBehaviour
         
         if (currentLap > totalLaps)
         {
-            isPaused = true;
+            ui.canPause = false;
+            ui.isPaused = true;
             
             player.canProcessInput = false;
             player.currentSpeed = 0;

@@ -61,7 +61,7 @@ public class IntroSystem : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             MusicManager.Instance.announcerSource.PlayOneShot(clip);
         }
-        MusicManager.Instance.musicSource.gameObject.SetActive(false);
+        
         GameManager.Instance.StartRace();
         yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);
