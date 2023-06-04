@@ -6,9 +6,11 @@ public class FinishLine : Checkpoint
     protected override void OnTriggerEnter(Collider other)
     {
         if (passed) return;
-        base.OnTriggerEnter(other);
-        GameManager.Instance.CheckForNewLap();
+        passed = true;
         StartCoroutine(WaitBeforeEnabling());
+        
+        if (!other.transform.parent.CompareTag("Player")) return;
+        GameManager.Instance.CheckForNewLap();
     }
     
     private IEnumerator WaitBeforeEnabling()

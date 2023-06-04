@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     
         Instance = this;
         // PlayerPrefs.DeleteKey($"{SceneManager.GetActiveScene().name}_bestTime");
+        // PlayerPrefs.DeleteKey($"{SceneManager.GetActiveScene().name}_bestLapTime");
     }
 
     // Start is called before the first frame update
