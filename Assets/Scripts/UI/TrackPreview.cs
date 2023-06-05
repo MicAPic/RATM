@@ -28,7 +28,6 @@ namespace UI
                 var vertex = loopVertexPositions[i];
                 var distance = vertex - loopVertexPositions[i - 1];
                 var sectionAnimationDuration = distance.sqrMagnitude / markerAnimationSpeed;
-                Debug.Log(sectionAnimationDuration);
                 
                 _sequence.Append(marker.DOAnchorPos(vertex, sectionAnimationDuration).SetEase(Ease.Linear));
             }

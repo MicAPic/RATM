@@ -428,9 +428,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<font=\"Audiowide SDF\">*</font>design <color=#078AB3>&</color> programming\r\n<align=right>micapic\r</align>\n\r\n<font=\"Audiowide
-    SDF\">*</font>music\r\n<align=right>mystuff\r</align>\n\r\n<font=\"Audiowide
-    SDF\">*</font>3d modeling\r\n<align=right>demuriagt\r\nm. hamed\r\nbearman337\r\nflovi
-    studios"
+    SDF\">*</font>music\r\n<align=right>mystuff\r\n\"main menu\":brian bright <color=#078AB3>remix:</color>mystuff</align>\n\r\n<font=\"Audiowide
+    SDF\">*</font>3d modeling\r\n<align=right>demuriagt\r                   <font=\"Audiowide
+    SDF\"><size=45>|</size></font>      m. hamed\r\nbearman337\r                     
+    <font=\"Audiowide SDF\"><size=45>|</size></font>  flovi studios</align>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dd8408e0ffdad2448fa63ea2d4f2fa3, type: 2}
   m_sharedMaterial: {fileID: 2319400518916601160, guid: 6dd8408e0ffdad2448fa63ea2d4f2fa3,
@@ -1011,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6beed2d8d87d45822bd05d5832eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
+  transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
 --- !u!1 &1466222851
 GameObject:
   m_ObjectHideFlags: 0
