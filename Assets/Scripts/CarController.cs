@@ -43,12 +43,13 @@ public class CarController : MonoBehaviour
     
     private Coroutine _currentEngineCoroutine;
     private Coroutine _currentScreechCoroutine;
-    
-    [Header("Animation")]
-    public float maxSteerAngle = 30f;
+
+    [Header("Animation")] 
+    public GameObject backlights;
     public Transform suspension;
     public List<Axle> axles;
-
+    [Space]
+    public float maxSteerAngle = 30f;
     public float currentSpeed;
     private float _speed;
     private float _rpm;
@@ -118,6 +119,10 @@ public class CarController : MonoBehaviour
                 _speed = acceleration * Input.GetAxis("Vertical");
             }
         }
+        else
+        {
+            StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
+        }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -131,12 +136,17 @@ public class CarController : MonoBehaviour
         {
             if (currentSpeed < 0.0f)
             {
+                backlights.SetActive(false);
                 StartAudioFade(engineAudioSource, 0.85f, fadeInDuration, true);
             }
+            else
+            {
+                backlights.SetActive(true);
+            }
         }
-        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        else
         {
-            StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
+            backlights.SetActive(false);
         }
         //
 

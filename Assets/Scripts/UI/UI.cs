@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,11 +15,13 @@ namespace UI
         
         public void LoadScene(string sceneName)
         {
+            DOTween.PauseAll();
             StartCoroutine(PrepareTransition(sceneName));
         }
 
-        public void LoadSceneAsync(AsyncOperation asyncOperation)
+        protected void LoadSceneAsync(AsyncOperation asyncOperation)
         {
+            DOTween.PauseAll();
             StartCoroutine(PrepareTransitionAsync(asyncOperation));
         }
 
