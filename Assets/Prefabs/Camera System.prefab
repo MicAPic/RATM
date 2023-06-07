@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3875641757956185841}
   - component: {fileID: 3875641757956185842}
   - component: {fileID: 3875641757956185843}
+  - component: {fileID: 8461778146238178846}
   m_Layer: 0
   m_Name: CM vcamBack
   m_TagString: Untagged
@@ -87,6 +88,36 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0.3, z: 1}
   m_ApplyAfter: 1
   m_PreserveComposition: 0
+--- !u!114 &8461778146238178846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875641757956185840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 51
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 4
+  m_MinimumDistanceFromTarget: 0.01
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0.1
+  m_Damping: 0.5
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0.1
 --- !u!1 &3875641757996813899
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,8 +146,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3875641757996813899}
-  m_LocalRotation: {x: 0, y: 0.99188364, z: -0.12714922, w: -1e-45}
-  m_LocalPosition: {x: 739.714, y: -0.6219206, z: 265.1133}
+  m_LocalRotation: {x: 0.09220898, y: -0.68294513, z: 0.08754631, w: 0.7193185}
+  m_LocalPosition: {x: 442.63614, y: -8.096647, z: -14.823557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
