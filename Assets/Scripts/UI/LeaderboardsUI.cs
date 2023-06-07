@@ -68,7 +68,7 @@ namespace UI
                     var entryField = leaderboardContainer.GetChild(i);
 
                     var textFields = entryField.GetComponentsInChildren<TMP_Text>();
-                    textFields[0].text = entry.Rank.ToString() + '.';
+                    textFields[0].text = (entries.Length - entry.Rank + 1).ToString() + '.';
                     textFields[1].text = entry.Username;
 
                     var times = entry.Extra.Split('/');

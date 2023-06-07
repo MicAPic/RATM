@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
     private void UploadNewScore()
     {
         var nickname = PlayerPrefs.GetString("nickname", string.Empty);
-        var score = (int)totalBestTime * 100;
+        var score = (int)(totalBestTime * 100);
         var boardEntry = $"{InGameUI.FormatTime(totalBestTime)}/{InGameUI.FormatTime(lapBestTime)}";
         
         LeaderboardCreator.Ping(isOnline => 
