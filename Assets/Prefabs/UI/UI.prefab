@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionMaterial: {fileID: 2100000, guid: fe45f2ebaf20bad48b9ae848a755d861, type: 2}
-  topSpeed: 33
+  topSpeed: 33.15067
   player: {fileID: 0}
   finishClip: {fileID: 8300000, guid: 868f4e7937678684ab16cf7598d05330, type: 3}
   recordClip: {fileID: 8300000, guid: c8aa118d1db282244b6d4e86d77e2877, type: 3}
