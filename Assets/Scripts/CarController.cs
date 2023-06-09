@@ -48,6 +48,7 @@ public class CarController : MonoBehaviour
     public GameObject backlights;
     public Transform suspension;
     public List<Axle> axles;
+    public float wheelRotationSpeed;
     [Space]
     public float maxSteerAngle = 30f;
     public float currentSpeed;
@@ -83,8 +84,8 @@ public class CarController : MonoBehaviour
         var rpm = Vector3.right * sphere.velocity.magnitude;
         foreach (var axle in axles)
         {
-            axle.leftWheel.Rotate(rpm);
-            axle.rightWheel.Rotate(rpm);
+            axle.leftWheel.Rotate(rpm * (Time.deltaTime * wheelRotationSpeed));
+            axle.rightWheel.Rotate(rpm * (Time.deltaTime * wheelRotationSpeed));
         }
         
         if (!canProcessInput) return;
@@ -98,6 +99,7 @@ public class CarController : MonoBehaviour
                 {
                     // brake
                     _speed = brakeModifier * acceleration * Input.GetAxis("Vertical");
+                    backlights.SetActive(true);
 
                     StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
                     if (Mathf.Abs(sphere.velocity.magnitude) > 25.0f)
@@ -111,12 +113,20 @@ public class CarController : MonoBehaviour
                 {
                     // reverse driving
                     _speed = reverseModifier * acceleration * Input.GetAxis("Vertical");
+                    backlights.SetActive(false);
+                    StartAudioFade(engineAudioSource, 0.85f, fadeInDuration, true);
                     StartAudioFade(wheelAudioSource, 0.0f, fadeOutDuration);
                 }
             }
             else
             {
                 _speed = acceleration * Input.GetAxis("Vertical");
+                StartAudioFade(engineAudioSource, 1.0f, fadeInDuration, true);
+                
+                if (Time.timeScale > 0.0f)
+                {
+                    backlights.SetActive(false);
+                }
             }
         }
         else
@@ -124,30 +134,11 @@ public class CarController : MonoBehaviour
             StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             engineAudioSource.PlayOneShot(engineStartClip);
         }
-        if (Input.GetKey(KeyCode.W))
-        {
-            StartAudioFade(engineAudioSource, 1.0f, fadeInDuration, true);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            if (currentSpeed < 0.0f)
-            {
-                backlights.SetActive(false);
-                StartAudioFade(engineAudioSource, 0.85f, fadeInDuration, true);
-            }
-            else
-            {
-                backlights.SetActive(true);
-            }
-        }
-        else
-        {
-            backlights.SetActive(false);
-        }
+
         //
 
         // Steering

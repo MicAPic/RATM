@@ -822,6 +822,7 @@ MonoBehaviour:
     rightWheel: {fileID: 977356386296111452}
   - leftWheel: {fileID: 977356387196763002}
     rightWheel: {fileID: 977356386546193697}
+  wheelRotationSpeed: 90
   maxSteerAngle: 30
   currentSpeed: 0
   currentYRotate: 0
