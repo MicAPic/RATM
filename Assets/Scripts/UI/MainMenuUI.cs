@@ -28,6 +28,7 @@ namespace UI
         {
             // allow raycasts through transparent parts of the disc
             disc.GetComponent<Image>().alphaHitTestMinimumThreshold = 1.0f;
+            Cursor.visible = true;
         }
 
         void Start()

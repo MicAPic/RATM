@@ -11,7 +11,7 @@ namespace UI
     public class InGameUI : UI
     {
         [SerializeField]
-        private float topSpeed;  // as of now, has to be determined empirically 
+        private float topSpeed;  // for now, has to be determined empirically 
         [SerializeField] 
         private CarController player;
 
@@ -20,6 +20,8 @@ namespace UI
         private AudioClip finishClip;
         [SerializeField]
         private AudioClip recordClip;
+        [SerializeField]
+        private AudioClip[] lapClips;  // 0: last lap; 1: 2nd to last, ...
 
         [Header("UI Elements")]
         [SerializeField]
@@ -83,6 +85,8 @@ namespace UI
 
             _minimapPosRange = new Vector2(minimapPosConstraints[1].x - minimapPosConstraints[0].x,
                                            minimapPosConstraints[1].y - minimapPosConstraints[0].y);
+            
+            Cursor.visible = false;
         }
 
         // Update is called once per frame
@@ -107,6 +111,8 @@ namespace UI
 
                 MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeIn(0.001f);
                 EnableButtons(false);
+                
+                Cursor.visible = false;
             }
             else
             {
@@ -118,6 +124,8 @@ namespace UI
                 
                 MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeOut(0.001f);
                 EnableButtons();
+                
+                Cursor.visible = true;
             }
 
             isPaused = !isPaused;
@@ -175,6 +183,8 @@ namespace UI
                       .OnComplete(() => endScreen.SetActive(true));
             MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeOut(0.001f);
             MusicManager.Instance.muffledSnapshot.TransitionTo(1.0f);
+            
+            Cursor.visible = true;
         }
         
         public void UpdateLapTime(float newBest)
@@ -198,7 +208,7 @@ namespace UI
             }
         }
 
-        public void UpdateLapText(int current, int total)
+        public void UpdateLapText(int current, int total, bool playClip=true)
         {
             if (current == total)
             {
@@ -206,6 +216,9 @@ namespace UI
             }
             lapText.text = current.ToString();
             lapText.GetComponent<Animator>().SetTrigger("NewLap");
+            
+            if (!playClip) return;
+            MusicManager.Instance.announcerSource.PlayOneShot(lapClips[total - current]);
         }
 
         public void EnableButtons(bool value=true)
