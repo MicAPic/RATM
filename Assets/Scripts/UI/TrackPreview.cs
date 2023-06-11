@@ -22,13 +22,13 @@ namespace UI
         void Start()
         {
             _sequence = DOTween.Sequence();
-
+            
             for (var i = 1; i < loopVertexPositions.Length; i++)
             {
                 var vertex = loopVertexPositions[i];
-                var distance = vertex - loopVertexPositions[i - 1];
-                var sectionAnimationDuration = distance.sqrMagnitude / markerAnimationSpeed;
-                
+                var distance = Vector2.Distance(vertex, loopVertexPositions[i - 1]);
+                var sectionAnimationDuration = distance * markerAnimationSpeed;
+
                 _sequence.Append(marker.DOAnchorPos(vertex, sectionAnimationDuration).SetEase(Ease.Linear));
             }
 

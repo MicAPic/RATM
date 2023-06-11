@@ -2266,7 +2266,7 @@ PrefabInstance:
     - target: {fileID: 4942808742956076582, guid: b99514c51d34e804188d1148e5021ac6,
         type: 3}
       propertyPath: markerAnimationSpeed
-      value: 30000
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4942808742956076582, guid: b99514c51d34e804188d1148e5021ac6,
         type: 3}
@@ -4425,7 +4425,7 @@ PrefabInstance:
     - target: {fileID: 4942808742956076582, guid: b99514c51d34e804188d1148e5021ac6,
         type: 3}
       propertyPath: markerAnimationSpeed
-      value: 30000
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4942808742956076582, guid: b99514c51d34e804188d1148e5021ac6,
         type: 3}
@@ -6980,7 +6980,7 @@ PrefabInstance:
     - target: {fileID: 4942808742956076582, guid: b99514c51d34e804188d1148e5021ac6,
         type: 3}
       propertyPath: markerAnimationSpeed
-      value: 20000
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6567492702632320414, guid: b99514c51d34e804188d1148e5021ac6,
         type: 3}
