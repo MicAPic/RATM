@@ -19,7 +19,7 @@ namespace UI
         {
             if (GameManager.Instance.mainTrack != null)
             {
-                _text.text = "Next up: " + GameManager.Instance.mainTrack.name;
+                _text.text = "Next up: " + GameManager.Instance.mainTrack.name.Replace("--", " / ");
             }
 
             var textAnimation = DOTween.Sequence();
