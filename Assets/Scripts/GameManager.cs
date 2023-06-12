@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Audio;
@@ -63,6 +64,8 @@ public class GameManager : MonoBehaviour
             ui.UpdateLapTime(lapBestTime);
         }
         ui.UpdateLapText(currentLap, totalLaps, playClip: false);
+        
+        UploadNewScore();
     }
     
     // Update is called once per frame
@@ -124,7 +127,7 @@ public class GameManager : MonoBehaviour
             var totalTime = Time.time - _raceStartTime;
             if (totalTime < totalBestTime)
             {
-                totalBestTime = totalTime;
+                totalBestTime = (float)Math.Round(totalTime, 2);
                 
                 PlayerPrefs.SetFloat($"{SceneManager.GetActiveScene().name}_bestTime", totalBestTime);
                 ui.UpdateTotalTime(totalBestTime, true);
@@ -162,20 +165,26 @@ public class GameManager : MonoBehaviour
                 if (isOnline && nickname != string.Empty) 
                 {
                     ui.onlineIcons.SetActive(true);
-                    LeaderboardCreator.UploadNewEntry(publicKey, nickname, score, boardEntry,
+                    LeaderboardCreator.DeleteEntry(publicKey,
                         _ =>
                         {
-                            StartCoroutine(ui.AnimateScoreUpload());
-                            ui.EnableButtons();
-                        },
-                        error =>
-                        {
-                            if (error == null) return;
-                            ui.EnableButtons();
+                            LeaderboardCreator.UploadNewEntry(publicKey, nickname, score, boardEntry,
+                                _ =>
+                                {
+                                    StartCoroutine(ui.AnimateScoreUpload());
+                                    ui.EnableButtons();
+                                },
+                                error =>
+                                {
+                                    if (error == null) return;
+                                    ui.EnableButtons();
 
-                            ui.ShowErrorIcon();
-                            Debug.Log(error);
-                        });
+                                    ui.ShowErrorIcon();
+                                    Debug.Log(error);
+                                }
+                            );
+                        }
+                    );
                 }
                 else
                 {

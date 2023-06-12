@@ -261,7 +261,7 @@ namespace UI
         public static string FormatTime(float time)
         {
             var minutes = (int)(time / 60);
-            var seconds = Math.Round(time % 60, 2);
+            var seconds = time % 60;
             var milliseconds = (int)(seconds % 1 * 100);
 
             return $"{minutes}:{(int)seconds:00}<size=50%>{milliseconds:00}";
