@@ -1,4 +1,5 @@
 using Dan.Main;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -70,9 +71,21 @@ namespace UI
             nameEntryPopup.GetComponent<Animator>().SetTrigger("NameIsSet");
         }
 
-        public void ToggleRadialGroup(Animator controller)
+        public void ToggleRadialGroup(RadialLayout radialLayout)
         {
-            controller.SetBool(Active, !controller.GetBool(Active));
+            float endValue;
+            endValue = Mathf.Abs(radialLayout.fDistance - 910.0f) < Mathf.Abs(radialLayout.fDistance - 450.0f) ? 
+                450.0f : 910.0f;
+            
+            DOTween.To(
+                () => radialLayout.fDistance,
+                x =>
+                {
+                    radialLayout.fDistance = x;
+                    radialLayout.CalculateLayoutInputHorizontal();
+                }, 
+                endValue, 
+                0.416f);
         }
     }
 }

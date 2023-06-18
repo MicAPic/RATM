@@ -949,7 +949,6 @@ GameObject:
   m_Component:
   - component: {fileID: 201420114}
   - component: {fileID: 201420115}
-  - component: {fileID: 201420116}
   m_Layer: 5
   m_Name: Buttons (Levels)
   m_TagString: Untagged
@@ -1003,26 +1002,6 @@ MonoBehaviour:
   MinAngle: 35
   MaxAngle: 95
   StartAngle: 150
---- !u!95 &201420116
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201420113}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bde0c2f1dde355d4b90d9d9b97764933, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &205550521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,7 +2501,6 @@ GameObject:
   m_Component:
   - component: {fileID: 468656886}
   - component: {fileID: 468656887}
-  - component: {fileID: 468656888}
   m_Layer: 5
   m_Name: Buttons (Main)
   m_TagString: Untagged
@@ -2577,26 +2555,6 @@ MonoBehaviour:
   MinAngle: 35
   MaxAngle: 95
   StartAngle: 150
---- !u!95 &468656888
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468656885}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4db1f66985f436b44bc099e54dfd4120, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &552479559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,8 +2727,8 @@ MonoBehaviour:
         m_MethodName: ToggleRadialGroup
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 468656888}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 468656887}
+          m_ObjectArgumentAssemblyTypeName: RadialLayout, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2781,8 +2739,8 @@ MonoBehaviour:
         m_MethodName: ToggleRadialGroup
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 201420116}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 201420115}
+          m_ObjectArgumentAssemblyTypeName: RadialLayout, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3726,8 +3684,8 @@ MonoBehaviour:
         m_MethodName: ToggleRadialGroup
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 468656888}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 468656887}
+          m_ObjectArgumentAssemblyTypeName: RadialLayout, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3738,8 +3696,8 @@ MonoBehaviour:
         m_MethodName: ToggleRadialGroup
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 201420116}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 201420115}
+          m_ObjectArgumentAssemblyTypeName: RadialLayout, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
