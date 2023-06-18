@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Audio;
 using DG.Tweening;
@@ -38,9 +37,13 @@ namespace UI
         private TMP_Text lapBestTime;
         [SerializeField]
         private Image speedometer;
+        [SerializeField]
+        private TMP_Text fpsCounter;
 
         private float _speedometerFill;
         private float _currentSpeedometerFill;
+        private float _fps;
+        private float _currentFps;
 
         private readonly Color _deepSaffron = new(1.0f, 0.6196079f, 0.2392157f);
         
@@ -98,6 +101,14 @@ namespace UI
             _speedometerFill = 0.0f;
             
             markerTransform.anchoredPosition = PlayerPos2MinimapPos(player.transform.position);
+
+            _fps = 1 / Time.unscaledDeltaTime;
+            _currentFps = Mathf.Lerp(_currentFps, _fps, Time.unscaledDeltaTime);
+            fpsCounter.text = _currentFps.ToString("0");
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                fpsCounter.gameObject.SetActive(!fpsCounter.gameObject.activeSelf);
+            }
 
             if (!Input.GetKeyDown(KeyCode.Escape) || !canPause) return;
 
