@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // PlayerPrefs.DeleteKey($"{SceneManager.GetActiveScene().name}_bestTime");
         // PlayerPrefs.DeleteKey($"{SceneManager.GetActiveScene().name}_bestLapTime");
-        
+
         _recordSystem = GetComponent<RecordSystem>();
     }
 
@@ -64,8 +64,6 @@ public class GameManager : MonoBehaviour
             ui.UpdateLapTime(lapBestTime);
         }
         ui.UpdateLapText(currentLap, totalLaps, playClip: false);
-        
-        UploadNewScore();
     }
     
     // Update is called once per frame
