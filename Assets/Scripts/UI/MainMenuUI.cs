@@ -2,6 +2,7 @@ using Dan.Main;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace UI
@@ -22,8 +23,6 @@ namespace UI
         private GameObject nameEntryPopup;
         [SerializeField] 
         private TMP_InputField nameInputField;
-        
-        private static readonly int Active = Animator.StringToHash("Active");
 
         private void Awake()
         {
@@ -40,7 +39,10 @@ namespace UI
         // Update is called once per frame
         void Update()
         {
-            var mouseVerticalPos = Input.GetAxis("Mouse Y");
+            //TODO: add controller support
+            // var mouseVerticalPos = Input.GetAxis("Mouse Y");
+            var mouseVerticalPos = Mouse.current.delta.ReadValue().y;
+            mouseVerticalPos = Mathf.Clamp(mouseVerticalPos, -1.0f, 1.0f);
             disc.Rotate(0, 0, -mouseVerticalPos);
         }
 
@@ -86,6 +88,11 @@ namespace UI
                 }, 
                 endValue, 
                 0.416f);
+        }
+
+        public void SetActiveButton(Button button)
+        {
+            button.Select();
         }
     }
 }

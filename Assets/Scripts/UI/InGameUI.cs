@@ -3,6 +3,8 @@ using Audio;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI
@@ -49,6 +51,8 @@ namespace UI
         
         [Header("Outro / Pause")]
         [SerializeField]
+        private InputAction pauseInputAction;
+        [SerializeField]
         private Image strikeLine;
         [SerializeField]
         private float lineAnimationDuration;
@@ -91,6 +95,18 @@ namespace UI
             
             Cursor.visible = false;
         }
+        
+        void OnEnable()
+        {
+            pauseInputAction.Enable();
+            pauseInputAction.performed += TogglePauseScreen;
+        }
+        
+        void OnDisable()
+        {
+            pauseInputAction.performed -= TogglePauseScreen;
+            pauseInputAction.Disable();
+        }
 
         // Update is called once per frame
         void Update()
@@ -105,41 +121,10 @@ namespace UI
             _fps = 1 / Time.unscaledDeltaTime;
             _currentFps = Mathf.Lerp(_currentFps, _fps, Time.unscaledDeltaTime);
             fpsCounter.text = _currentFps.ToString("0");
-            if (Input.GetKeyDown(KeyCode.F2))
+            if (Keyboard.current.f2Key.wasPressedThisFrame)
             {
                 fpsCounter.gameObject.SetActive(!fpsCounter.gameObject.activeSelf);
             }
-
-            if (!Input.GetKeyDown(KeyCode.Escape) || !canPause) return;
-
-            if (isPaused)
-            {
-                // Unpause
-                Time.timeScale = 1.0f;
-                MusicManager.Instance.normalSnapshot.TransitionTo(0.5f);
-                strikeLine.DOFillAmount(0.0f, lineAnimationDuration);
-                endScreen.SetActive(false);
-
-                MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeIn(0.001f);
-                EnableButtons(false);
-                
-                Cursor.visible = false;
-            }
-            else
-            {
-                // Pause
-                Time.timeScale = 0.0f;
-                MusicManager.Instance.muffledSnapshot.TransitionTo(0.5f);
-                strikeLine.DOFillAmount(1.0f, lineAnimationDuration).SetUpdate(true);
-                endScreen.SetActive(true);
-                
-                MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeOut(0.001f);
-                EnableButtons();
-                
-                Cursor.visible = true;
-            }
-
-            isPaused = !isPaused;
         }
 
         void FixedUpdate()
@@ -197,13 +182,13 @@ namespace UI
             
             Cursor.visible = true;
         }
-        
+
         public void UpdateLapTime(float newBest)
         {
             lapBestTime.text = $"<size=50%><font=\"Audiowide SDF\">H. </font></size>{FormatTime(newBest)}";
             lapBestTime.GetComponent<Animator>().SetTrigger("NewLap");
         }
-        
+
         public void UpdateTotalTime(float time, bool newRecord)
         {
             totalTime.gameObject.SetActive(true);
@@ -239,7 +224,7 @@ namespace UI
                 button.interactable = value;
             }
         }
-        
+
         public IEnumerator AnimateScoreUpload()
         {
             onlineIcons.SetActive(true);
@@ -257,6 +242,40 @@ namespace UI
         {
             var globe = onlineIcons.transform.GetChild(1).GetComponent<Image>();
             globe.sprite = offlineIcon;
+        }
+
+        private void TogglePauseScreen(InputAction.CallbackContext context)
+        {
+            if (!canPause) return;
+
+            if (isPaused)
+            {
+                // Unpause
+                Time.timeScale = 1.0f;
+                MusicManager.Instance.normalSnapshot.TransitionTo(0.5f);
+                strikeLine.DOFillAmount(0.0f, lineAnimationDuration);
+                endScreen.SetActive(false);
+
+                MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeIn(0.001f);
+                EnableButtons(false);
+
+                Cursor.visible = false;
+            }
+            else
+            {
+                // Pause
+                Time.timeScale = 0.0f;
+                MusicManager.Instance.muffledSnapshot.TransitionTo(0.5f);
+                strikeLine.DOFillAmount(1.0f, lineAnimationDuration).SetUpdate(true);
+                endScreen.SetActive(true);
+
+                MusicManager.Instance.sfxSource.GetComponent<AudioPlayer>().FadeOut(0.001f);
+                EnableButtons();
+
+                Cursor.visible = true;
+            }
+
+            isPaused = !isPaused;
         }
 
         private Vector2 PlayerPos2MinimapPos(Vector3 playerPos)

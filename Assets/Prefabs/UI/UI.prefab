@@ -1609,6 +1609,7 @@ RectTransform:
   - {fileID: 3238644591027719455}
   - {fileID: 1114355601688506625}
   - {fileID: 3136285397336051885}
+  - {fileID: 4585383640937597628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1708,6 +1709,31 @@ MonoBehaviour:
   lapBestTime: {fileID: 7490942919046669546}
   speedometer: {fileID: 7490942917636773138}
   fpsCounter: {fileID: 8788943242101861207}
+  pauseInputAction:
+    m_Name: Pause Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8a5b1a94-67a7-4965-99fc-3703ffb3bf6c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ba502239-0486-421c-9219-9d7e1b7c5121
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: c5bb2be6-7128-4c65-99f6-8a1e9d9c1d66
+      m_Path: <Gamepad>/start
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause Input
+      m_Flags: 0
+    m_Flags: 0
   strikeLine: {fileID: 1649977008648766828}
   lineAnimationDuration: 0.75
   endScreen: {fileID: 5806874137865805861}
@@ -2114,6 +2140,95 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &7510382852528538934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4585383640937597628}
+  - component: {fileID: 4436536288564871950}
+  - component: {fileID: 176286354161929625}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4585383640937597628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510382852528538934}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -540.4371, z: 0}
+  m_LocalScale: {x: 1.9979188, y: 1.9979188, z: 1.9979188}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7490942918507201640}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4436536288564871950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510382852528538934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 7604451863270193723}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &176286354161929625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510382852528538934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: a7ce07cd8fe1fb04ea29f888b3222c32,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &7517124179236568063
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,7 +2481,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
     m_HighlightedColor: {r: 0.30980393, g: 0.15294118, b: 0, a: 1}
     m_PressedColor: {r: 0.30980393, g: 0.15294118, b: 0, a: 1}
-    m_SelectedColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
+    m_SelectedColor: {r: 0.30980393, g: 0.15294118, b: 0, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.050980393}
     m_ColorMultiplier: 4
     m_FadeDuration: 0.1
@@ -2878,7 +2993,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
     m_HighlightedColor: {r: 0.30980393, g: 0.15294118, b: 0, a: 1}
     m_PressedColor: {r: 0.30980393, g: 0.15294118, b: 0, a: 1}
-    m_SelectedColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
+    m_SelectedColor: {r: 0.30980393, g: 0.15294118, b: 0, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.050980393}
     m_ColorMultiplier: 4
     m_FadeDuration: 0.1

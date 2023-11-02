@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -59,16 +60,36 @@ public class CarController : MonoBehaviour
     public float currentZRotate;
     private float _zRotate;
 
+    [Header("Input")]
+    private float _accelerationInputValue;
+    private float _brakingInputValue;
+    private float _steeringInputValue;
     private bool _drifting;
     private int _driftDirection;
+    private PlayerInput _playerInput;
 
     private Transform _transform;
     private float _maxVelocity;
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _transform = transform;
+        _playerInput = GetComponent<PlayerInput>();
+    }
+    
+    void OnAccelerate(InputValue value)
+    {
+        _accelerationInputValue = value.Get<float>();
+    }
+    
+    void OnBrakeReverse(InputValue value)
+    {
+        _brakingInputValue = value.Get<float>();
+    }
+
+    void OnSteer(InputValue value)
+    {
+        _steeringInputValue = value.Get<float>();
     }
 
     // Update is called once per frame
@@ -91,94 +112,100 @@ public class CarController : MonoBehaviour
         if (!canProcessInput) return;
         
         // Acceleration & relevant audio
-        if (Input.GetAxis("Vertical") != 0)
+        if (_brakingInputValue > 0)
         {
-            if (Input.GetAxis("Vertical") < 0)
+            if (currentSpeed > 0)
             {
-                if (currentSpeed > 0)
-                {
-                    // brake
-                    _speed = brakeModifier * acceleration * Input.GetAxis("Vertical");
-                    backlights.SetActive(true);
+                // brake
+                _speed = brakeModifier * acceleration * -_brakingInputValue;
+                backlights.SetActive(true);
 
-                    StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
-                    if (Mathf.Abs(sphere.velocity.magnitude) > 25.0f)
-                    {
-                        wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
-                        wheelAudioSource.Play();
-                        StartAudioFade(wheelAudioSource, 0.65f, fadeInDuration);
-                    }
-                }
-                else
+                StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
+                if (Mathf.Abs(sphere.velocity.magnitude) > 25.0f)
                 {
-                    // reverse driving
-                    _speed = reverseModifier * acceleration * Input.GetAxis("Vertical");
-                    backlights.SetActive(false);
-                    StartAudioFade(engineAudioSource, 0.85f, fadeInDuration, true);
-                    StartAudioFade(wheelAudioSource, 0.0f, fadeOutDuration);
+                    wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
+                    wheelAudioSource.Play();
+                    StartAudioFade(wheelAudioSource, 0.65f, fadeInDuration);
                 }
             }
             else
             {
-                _speed = acceleration * Input.GetAxis("Vertical");
-                StartAudioFade(engineAudioSource, 1.0f, fadeInDuration, true);
-                
-                if (Time.timeScale > 0.0f)
-                {
-                    backlights.SetActive(false);
-                }
+                // reverse driving
+                _speed = reverseModifier * acceleration * -_brakingInputValue;
+                backlights.SetActive(false);
+                StartAudioFade(engineAudioSource, 0.85f, fadeInDuration, true);
+                StartAudioFade(wheelAudioSource, 0.0f, fadeOutDuration);
+            }
+        }
+        else if (_accelerationInputValue > 0)
+        {
+            _speed = acceleration * _accelerationInputValue;
+            StartAudioFade(engineAudioSource, 1.0f, fadeInDuration, true);
+            
+            if (Time.timeScale > 0.0f)
+            {
+                backlights.SetActive(false);
             }
         }
         else
         {
             StartAudioFade(engineAudioSource, 0.0f, fadeOutDuration, true);
         }
+        
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (_playerInput.actions["Accelerate"].WasPressedThisFrame())
         {
             engineAudioSource.PlayOneShot(engineStartClip);
         }
-
         //
 
-        // Steering
-        if (Input.GetAxis("Horizontal") != 0 && Mathf.Abs(currentSpeed) - 3.0f > 0) 
+        if (_steeringInputValue != 0)
         {
-            // the second condition is added to prevent steering when the car has stopped
-            
-            var dir = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
-            var amount = Mathf.Abs(Input.GetAxis("Horizontal"));
-            Steer(dir, amount);
+            // Steering
+            if (Mathf.Abs(currentSpeed) - 3.0f > 0)
             {
-                var wheelSteer = new Vector3(axles[0].leftWheel.localEulerAngles.x, 
-                                             dir * amount * maxSteerAngle, 
-                                             0);
-                axles[0].leftWheel.localEulerAngles = wheelSteer;
-                axles[0].rightWheel.localEulerAngles = wheelSteer;
+                // the second condition is added to prevent steering when the car has stopped
+                var dir = _steeringInputValue > 0 ? 1 : -1;
+                if (currentSpeed < 0)
+                {
+                    // steering controls are reversed
+                    dir = -dir;
+                }
+                var amount = Mathf.Abs(_steeringInputValue);
+                Steer(dir, amount);
+                if (Time.timeScale > 0)
+                {
+                    var wheelSteer = new Vector3(axles[0].leftWheel.localEulerAngles.x,
+                        dir * amount * maxSteerAngle,
+                        0);
+                    axles[0].leftWheel.localEulerAngles = wheelSteer;
+                    axles[0].rightWheel.localEulerAngles = wheelSteer;
+                }
+            }
+
+            // Drifting (start)
+            if (_playerInput.actions["Drift"].WasPressedThisFrame() && !_drifting)
+            {
+                wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
+                wheelAudioSource.Play();
+                StartAudioFade(wheelAudioSource, 1.0f, fadeInDuration);
+
+                _drifting = true;
+                _driftDirection = _steeringInputValue > 0 ? 1 : -1;
             }
         }
-        //
         
-        // Drifting
-        if (Input.GetButtonDown("Jump") && !_drifting && Input.GetAxis("Horizontal") != 0)
-        {
-            wheelAudioSource.clip = screechClips[Random.Range(0, screechClips.Length)];
-            wheelAudioSource.Play();
-            StartAudioFade(wheelAudioSource, 1.0f, fadeInDuration);
-            
-            _drifting = true;
-            _driftDirection = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
-        }
-        
+        // Drifting (process)
         if (_drifting)
         {
             float control = _driftDirection == 1 ? 
-                ExtensionMethods.Remap(Input.GetAxis("Horizontal"), -1, 1, 0, 2) : 
-                ExtensionMethods.Remap(Input.GetAxis("Horizontal"), -1, 1, 2, 0);
+                _steeringInputValue.Remap(-1, 1, 0, 2) : 
+                _steeringInputValue.Remap(-1, 1, 2, 0);
             Steer(_driftDirection, control);
         }
         
-        if (Input.GetButtonUp("Jump") && _drifting)
+        // Drifting (end)
+        if (_playerInput.actions["Drift"].WasReleasedThisFrame() && _drifting)
         {
             StartAudioFade(wheelAudioSource, 0.0f, fadeOutDuration);
             _drifting = false;

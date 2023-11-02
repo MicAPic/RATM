@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Audio;
 using UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class IntroSystem : MonoBehaviour
 {
@@ -14,6 +18,7 @@ public class IntroSystem : MonoBehaviour
     private PlayableDirector _director;
 
     private bool _canSkip = true;
+    private IDisposable _eventListener;
     private Coroutine _delayCoroutine;
 
     private void Awake()
@@ -27,17 +32,24 @@ public class IntroSystem : MonoBehaviour
         _director.Play();
         _delayCoroutine = StartCoroutine(DelayCountdown((float) _director.duration));
     }
-
-    void Update()
+    
+    void OnEnable()
     {
-        if (_canSkip && Input.anyKey)
+        _eventListener = InputSystem.onAnyButtonPress.Call(_ =>
         {
+            if (!_canSkip) return;
+            
             _canSkip = false;
             _director.time = _director.duration;
             MusicManager.Instance.musicSource.GetComponent<AudioPlayer>().FadeOut(0.01f);
             StopCoroutine(_delayCoroutine);
             StartCoroutine(Countdown());
-        }
+        });
+    }
+
+    private void OnDisable()
+    {
+        _eventListener.Dispose();
     }
 
     private IEnumerator DelayCountdown(float delay)
