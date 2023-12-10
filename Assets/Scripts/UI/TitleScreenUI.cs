@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
+using Audio;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -18,6 +22,8 @@ namespace UI
         private AudioSource sfxSource;
 
         private AsyncOperation _sceneLoadOperation;
+        private bool _registerPresses = true;
+        private IDisposable _eventListener;
 
         void Start()
         {
@@ -27,14 +33,21 @@ namespace UI
             border.DOFillAmount(1.0f, introAnimationDuration)
                   .OnComplete(announcerSource.Play);
         }
-
-        // Update is called once per frame
-        void Update()
+        
+        void OnEnable()
         {
-            if (Input.anyKey)
+            _eventListener = InputSystem.onAnyButtonPress.Call(_ =>
             {
+                if (!_registerPresses) return;
+                
+                _registerPresses = false;
                 StartCoroutine(PlayEffectAndTransition());
-            }
+            });
+        }
+
+        void OnDisable()
+        {
+            _eventListener.Dispose();
         }
 
         private IEnumerator PlayEffectAndTransition()
