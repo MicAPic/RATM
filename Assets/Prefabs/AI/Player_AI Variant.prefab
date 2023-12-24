@@ -235,8 +235,16 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 3000
+  MaxStep: 10000
   trainingMode: 1
+  minimalY: -20
+  threshold: 10
+  minimalFps: 5
+  roadMask:
+    serializedVersion: 2
+    m_Bits: 64
+  stageAreaCollider: {fileID: 0}
+  sphereTransform: {fileID: 5014564597860797376}
 --- !u!114 &3863243699951355683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +289,9 @@ MonoBehaviour:
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
+--- !u!4 &5014564597860797376 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 977356386678096096, guid: ce8a968a2cc3ee54fb41cf8048d02bcd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5190129853236923168}
+  m_PrefabAsset: {fileID: 0}
