@@ -240,6 +240,7 @@ MonoBehaviour:
   minimalY: -20
   threshold: 10
   minimalFps: 5
+  bugsOutputLocation: Assets\ML-Agents\Output
   roadMask:
     serializedVersion: 2
     m_Bits: 64
